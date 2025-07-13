@@ -620,11 +620,16 @@
 <div id="whatever1" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[정체불명의 기구]</span><br><br>
 기구 앞에 서자 스르륵... 기계 몸체가 갈라지듯이 열렸다.<br>설마 이 안으로 들어가라는 건가...?</p>
-    <button onclick="goTo('whatever2')">들어간다</button>
+    <button onclick="goTo('whatever3')">들어간다</button>
  </div> 
-  
 
-  
+       <!-- 이상한 기구 --> 
+<div id="whatever3" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[정체불명의 기구]</span><br><br>
+차가운 기계 안에 들어가 서자 시야가 가려지더니...<br>"유언집행자 님의 오늘의 건강 점수는 <span id="recording-score-4"></span><br><span id="comment"></span>"<br>그런 기계음이 들려온 후 몸이 열렸다. ...이거, 뭘 체크한 거지?</p>
+<button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
   // 애니메이션이 끝난 뒤 hover 작동 허용
@@ -985,15 +990,25 @@ function goTo(page) {
     if (page === 'starting-point') {
     document.getElementById('persistent-nav').style.display = 'flex';
   }
-if (page === 'recording4') {
+if (page === 'whatever3') {
   const scoreEl = document.getElementById('recording-score-4');
   if (scoreEl) scoreEl.innerText = `${Math.floor(Math.random() * 101)}점!`;
-}
-if (page === 'recording5') {
-  const scoreEl = document.getElementById('recording-score-5');
-  if (scoreEl) scoreEl.innerText = `${Math.floor(Math.random() * 101)}점!`;
-}
 
+  const commentEl = document.getElementById('comment');
+  if (commentEl) {
+    const comments = [
+      "오늘의 조언 : 금연과 금주가 건강의 포인트입니다.",
+      "오늘의 조언 : 멘탈 관리가 건강의 포인트입니다.",
+      "오늘의 조언 : 감정을 적절히 분출하는 것이 건강의 포인트입니다.",
+      "오늘의 조언 : 난이도가 어렵지 않은 운동을 하는 것이 건강의 포인트입니다.",
+      "오늘의 조언 : 타인과 커뮤니케이션을 늘리는 것이 건강의 포인트입니다.",
+      "오늘의 조언 : 새로운 도전을 하는 것이 건강의 포인트입니다.",
+      "오늘의 조언 : 행복한 웃음을 많이 짓는 것이 건강의 포인트입니다."
+    ];
+    const randomComment = comments[Math.floor(Math.random() * comments.length)];
+    commentEl.innerText = randomComment;
+  }
+}
   //얘네는 버튼 없애기용인데 이렇게 하지 말고 goTodel 사용을 고려할 것 ...
   const flowerButton = document.getElementById('flower-button-box');
 if (flowerButton) {
