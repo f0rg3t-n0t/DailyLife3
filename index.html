@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapter 2-DAILY LIFE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+  <style>
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f5f5f5;
+      color: black;
+      text-align: center;
+      padding: 2em;
+    }
+    .hidden { display: none; }
+
+#user-display {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  font-family: monospace;
+  color: #3F40D3;
+  border: 1px solid #ddd;
+  min-width: 180px;
+}
+
+#persistent-nav {
+  position: fixed;
+  top: 110px;
+  left: 10px;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  gap: 4px; /* 버튼 사이 간격 줄임 */
+  background-color: #F5F5F5;
+  padding: 6px 8px; /* 네모 자체 여백 줄임 */
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
+  min-width: 140px; /* 폭도 작게 */
+}
+
+#persistent-nav button {
+  background-color: #3F40D3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 6px;     /* 버튼 내부 여백 줄임 */
+  margin: 0;            /* 버튼 외부 여백 제거 */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;      /* 글자 크기 줄임 */
+  transition: background-color 0.2s ease;
+}
+
+#persistent-nav button:hover {
+  background-color: #2c2db2;
+}
+
+#barcode-icon {
+  width: 60px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+#user-text > div {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3F40D3;  /* 혹시 상속이 안 될 수도 있으니 명시 */
+}
+    #bgm-player {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    #bgm-player button {
+      background-color: #3f40d3 !important;
+      color: white;
+    }
+
+    .fade-in {
+      animation: fadein 1.2s ease-in;
+            }
+  
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .typewriter {
+      font-weight: bold;
+      font-size: 1.1em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #3f40d3;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+      margin-bottom: 1em;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes pop {
+    0% { transform: scale(0.7); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+
+  #drink-result {
+    animation: pop 0.6s ease-out;
+    transition: all 0.2s ease;
+  }
+  
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      background-color: #3f40d3;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2c2db2;
+    }
+    .nav-button {
+      background-color: #444 !important;
+      font-size: 0.85em !important;
+      padding: 5px 12px !important;
+    }
+    .logo {
+      width: 200px;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+
+<!-- !!!!여기서부터 BODY!!!! -->
+<body>
+  <!-- 유저 디스플레이 -->
+<div id="user-display">
+  <img src="zzapbarcode.png" alt="barcode" id="barcode-icon">
+  <div id="user-text">
+    <p id="user-class-line">User ID : UNKNOWN</p>
+    <p id="coin-line">Coin : ???</p>
+  </div>
+</div>
+  <!-- 브금 플레이어 -->
+  <div id="bgm-player">
+    <audio id="bgm" src="zzapbgm.mp3" loop></audio>
+    <button onclick="document.getElementById('bgm').play()">▶</button>
+    <button onclick="document.getElementById('bgm').pause()">⏸</button>
+  </div>
+  
+  <!-- 로고 -->
+  <img class="logo" src="zzaplogo.png"/>
+  
+  <!-- 내비게이션 -->
+  <div id="persistent-nav">
+  <button onclick="goTo('main-page-2nd')">메인 화면</button>
+  <button onclick="goTo('guide')">조사 가이드</button>
+  <button onclick="goTo('starting-point')">건물 입구로</button>
+</div>
+  
+<!-- main-page 버튼 이미지 배치 -->
+<div id="main-page" class="hidden" style="position: relative; height: 100vh; background-color: #f5f5f5;">
+  <!-- Initiation -->
+  <img src="initiation.png" class="menu-button initiation" loading="lazy" onclick="goTo('starting-point')" alt="시작">
+  <!-- Guide -->
+  <img src="guide.png" class="menu-button guide" loading="lazy" onclick="goTo('guide')" alt="가이드">
+  <!-- Report -->
+  <img src="report.png" class="menu-button report" loading="lazy" onclick="goTo('report')" alt="종료">
+</div>
+<style>
+  .menu-button {
+    position: absolute;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: translateX(0) scale(1); /* 애니메이션 최종 위치 */
+    transition: transform 0.4s ease;
+    opacity: 0;
+    pointer-events: none; /* 애니메이션 끝날 때까지 hover 방지 */
+  }
+  /* Initiation 버튼 */
+  .initiation {
+    top: 1%;
+    left: 39%;
+    width: 12%;
+    height: auto;
+    animation-name: slideInLeft;
+    animation-duration: 1.2s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+  /* Guide 버튼 */
+  .guide {
+    top: 17%;
+    right: 40%;
+    width: 14%;
+    height: auto;
+    animation-name: slideInRight;
+    animation-duration: 1.2s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+  /* Report 버튼 */
+  .report {
+    top: 36%;
+    left: 39%;
+    width: 15%;
+    height: auto;
+    animation-name: slideInLeft;
+    animation-duration: 1.2s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+  /* 등장 애니메이션 정의 */
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-80%) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(80%) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+  }
+/* 공통 Hover 발광 효과 */
+.initiation:hover,
+.guide:hover,
+.report:hover {
+  filter: drop-shadow(0 0 8px rgba(63, 64, 211, 0.6)); /* #3F40D3 계열 빛 */
+  transition: filter 0.4s ease-in-out;
+}
+
+</style>
+
+<!-- !!!!여기서부터 작동시킬 페이지들!!!! -->
+  <!-- 로그인 화면 -->
+  <div id="login-page">
+    <p>ID를 입력하세요.</p>
+    <input id="id-input" type="text" />
+    <button onclick="checkLogin()">확인</button>
+    <p id="login-error" style="color: #ff4444;"></p>
+  </div>
+
+    <!-- guide 페이지 -->
+<div id="guide" class="hidden" style="padding: 3em; text-align: left; text-align: left; max-width: 700px; margin: 0 auto; background: white; border: 3px solid #3f40d3; border-radius: 10px; color: black;">
+  <p><span style="font-weight: bold; color: #3f40d3;">조사 가이드</span><br><br><br>
+    웹에서는 클릭, 모바일에서는 터치로 진행합니다. 자유롭게 종료하고 재실행하셔도 좋지만, 창을 닫거나 뒤로가기/새로고침할 시 진행 경과가 초기화되니 주의해 주세요.<br>
+    본 조사는 별도의 서버를 사용하지 않기 때문에 세션을 종료하면 결과가 저장되지 않습니다.<br><br>
+    메인 화면에서 '조사 종료→조사 마치기' 를 클릭하면 획득 코인을 알려 주는 화면이 표시됩니다. 최종 화면을 표시한 후에는 이전으로 돌아갈 수 없습니다.<br>
+    최종 화면을 스크린 캡처하여 총괄계 DM으로 보내 주시면 조사 완료 처리됩니다.</p>
+    <br>
+    <button class="nav-button" onclick="goBack()">나가기</button>
+</div>
+
+  <!-- 레포트 주의사항 -->
+  <div id="report" class="hidden">
+    <p>모든 조사를 마치고 최종 리포트를 작성합니다. 진행할 시 이전 단계로 되돌아갈 수 없습니다.<br>조사를 마칠까요?</p>
+    <button onclick="loadFinalReport()">조사를 마친다</button><br>
+    <button class="nav-button" onclick="goBack()">취소</button>
+  </div>
+  
+  <!-- 뒤로가기 적용된 메인 페이지 -->
+<div id="main-page-2nd" class="hidden" style="position: relative; height: 100vh; background-color: #f5f5f5;">
+  <!-- Initiation -->
+  <img src="initiation.png" class="menu-button initiation" onclick="goBack()" alt="시작">
+  <!-- Guide -->
+  <img src="guide.png" class="menu-button guide" onclick="goTo('guide')" alt="가이드">
+  <!-- Report -->
+  <img src="report.png" class="menu-button report" onclick="goTo('report')" alt="종료">
+  </div>
+  
+  <!-- 스타팅 포인트 -->  
+  <div id="starting-point" class="hidden">
+    <p><span style="font-weight: bold;">[건물 입구]</span><br><br>흰 관을 연상시키는 건물. 그 입구에 다다른다.<br>돌로 된 정문 표면에는 알 수 없는 문자가 빼곡히 음각으로 새겨져 있다.<br>건물 바깥은 이미 충분히 돌아보았으니 오늘은 새로 공개된 장소 위주로 탐색해 보자.</p>
+    <button onclick="goTo('inside')">건물 안으로 들어간다</button>
+  </div>
+
+  <!-- 내부 1층 --> 
+  <div id="inside" class="hidden">
+    <p><span style="font-weight: bold;">[건물 1층]</span><br><br>대리석 바닥이 반짝거리는 건물 1층.<br>정면에 방문객을 맞이하는 <span style="color: #3f40d3;">로비</span>가 보이고, 로비 뒤편에는 뒤편에는 유리로 된 <span style="color: #3f40d3;">엘리베이터</span>가 배치되어 있어 시선이 저절로 천장을 향한다.<br>더 안쪽에 있는 복도는 <span style="color: #3f40d3;">레스토랑</span>으로 이어지는 듯하다.</p>
+    <button onclick="goTo('lobby')">로비</button>
+    <button onclick="goTo('elevator')">엘리베이터</button>
+    <button onclick="goTo('restaurant')">레스토랑</button><br>
+    <button class="nav-button" onclick="goTo('starting-point')">건물 입구로 돌아가기</button>
+  </div>
+
+      <!-- 로비:엘리베이터:탑승 --> 
+    <div id="elevator" class="hidden">
+    <p><span style="font-weight: bold;">[엘리베이터]</span><br><br>원하는 층으로 이동할 수 있다.<br>하지만 4층 이상부터는 정비 중인지, 버튼을 눌러도 불이 들어오지 않는다.</p>
+      <button onclick="goToWithSound('3rdfloor','zzapelevator.mp3')">3층</button><br>
+    <button onclick="goToWithSound('2ndfloor','zzapelevator.mp3')">2층</button><br>
+      <button onclick="goToWithSound('inside','zzapelevator.mp3')">1층</button><br>
+ </div>     
+  
+    <!-- 로비 --> 
+    <div id="lobby" class="hidden">
+    <p><span style="font-weight: bold;">[로비]</span><br><br>건물에 들어오면 가장 먼저 보게 되는 곳.<br>우아한 석조 <span style="color: #3f40d3;">카운터</span>를 중심으로 내빈을 위한 라운지가 마련되어 있다.</p>
+    <button onclick="goTo('counter')">카운터</button><br>
+    <button class="nav-button" onclick="goTo('inside')">나가기</button>
+  </div>
+
+    <!-- 로비:카운터 --> 
+    <div id="counter" class="hidden">
+    <p><span style="font-weight: bold;">[로비]<br>[카운터]</span><br><br>보통이라면 직원이 서 있어야 할 카운터 너머에는 아무도 없다. 가까이 다가가자 공증인의 목소리가 울린다.<br><br><em>"좋은 하루 보내고 계신가요?"</em><br><br><em>"이번에도 작은 퀴즈를 준비했습니다. 유언 집행을 위한 기력 충전에 도움이 되었으면 좋겠군요."</em></p>
+    <button onclick="goTo('notary')">공증인과 대화하기</button><br>
+    <button class="nav-button" onclick="goTo('lobby')">나가기</button>
+ </div>
+  
+    <!-- 로비:카운터:notary --> 
+    <div id="notary" class="hidden">
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br>스피커를 통해 흘러나오는 목소리는 정중하지만, 마냥 신뢰할 수는 없다...<br><em>"어떤 일을 도와드릴까요?"</em></p>
+    <button id="nota1" onclick="goTodel('notary1', 'nota1')">로렘의 유언에 대해서</button><br>
+    <button id="nota2" onclick="goTodel('notary2', 'nota2')">기록체에 대해서</button><br>
+    <button onclick="goTo('notary4')">퀴즈를 푼다</button><br>
+    <button class="nav-button" onclick="goTo('counter')">대화를 끝낸다</button>
+ </div>
+  
+    <!-- 로비:카운터:notary1 --> 
+    <div id="notary1" class="hidden">
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"로렘 님께서 작성하신 유언을 한 치의 오차 없이 낭독해 드렸습니다.<br>믿기 어려워하시는 유언집행자 분들이 많으신 듯해 유감입니다만...<br>그렇다고 유언을 집행하지 않을 수도 없는 노릇이지요."</em></p>
+    <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
+ </div>
+  
+    <!-- 로비:카운터:notary2 --> 
+    <div id="notary2" class="hidden">
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"기록체는 고인의 기억이나 성격을 기반으로 새로운 아웃풋을 도출하기도 합니다.<br>실로 놀라운 기술이지요. 여러분께 선보일 수 있어 영광입니다."</em></p>
+    <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
+ </div>
+
+      <!-- 로비:카운터:notary4 --> 
+    <div id="notary4" class="hidden">
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"그럼 문제입니다. 미래기관 대출 순위 1위 도서의 제목을 알고 계신가요?"</em><br><br>정확한 제목을 괄호 없이 입력하자.</p>
+    <input type="text" id="secret-code-input">
+    <div id="codebox">
+    <button onclick="checkSecretCode()">확인</button>
+  </div>
+    <p id="secret-code-result"></p>
+    <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
+ </div>
+  
+      <!-- 로비:카운터:notary5 --> 
+    <div id="notary5" class="hidden">
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"정답입니다. 한 번 빌려 보시는 것은 어떤가요?"</em><br><br>짝짝짝, 박수 소리가 울리나 싶더니 어느새 카운터 위에 동전 두 개가 놓여 있다. 퀴즈를 맞힌 보상인 것 같다.<br><span style="font-weight: bold;">2코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
+ </div>
+  
+    <!-- 레스토랑 --> 
+    <div id="restaurant" class="hidden">
+    <p><span style="font-weight: bold;">[레스토랑]</span><br><br>이곳에 모인 초세계급들의 식사를 책임지는 레스토랑. 식사를 하며 바깥 풍경을 바라볼 수 있도록 유리창이 나 있다.
+    <br>전에 보았던 것과 크게 달라진 점은 없지만, <span style="color: #3f40d3;">"음료 디스펜서는 3층의 영화관으로 이전했습니다"</span> 라는 안내문이 붙어 있다.</p>
+      <button class="nav-button" onclick="goTo('inside')">나가기</button>
+  </div>
+
+  <!-- 영화관 : 음료 디스펜서 --> 
+  <div id="dispenser" class="hidden">
+  <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
+  커피나 차 등의 음료를 자유롭게 이용 가능한 디스펜서.<br>기본적인 음료는 물론, 여러 가지 맛의 원두와 티백, 시럽도 비치되어 있어 얼마든지 원하는 음료를 제조 가능할 것 같다.<br>
+  한쪽에는 '랜덤 디스펜서 : 1일 3회 이용 가능' 이라고 적힌 익숙한 상자가 있다.<br>그 옆에는 '랜덤 음료 공모전' 이라고 적힌 투표함이 놓여 있다.</p>
+  <button onclick="goTo('dispenser1')">음료를 뽑는다</button>
+  <button onclick="goTo('dispenser2')">랜덤 음료 공모전</button><br>
+  <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+  
+  <!-- 영화관 : 음료 디스펜서 1 (음료를 뽑는다) -->
+  <div id="dispenser1" class="hidden">
+  <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
+  원하는 음료를 가져가거나 랜덤 디스펜서를 이용해 보자. 랜덤 디스펜서는 1일 3회 사용 제한이 있다.</p>
+  <button onclick="selectDrink('coke')">콜라</button>
+  <button onclick="selectDrink('melon')">메론 소다</button>
+  <button onclick="selectDrink('boricha')">보리차</button>
+  <button onclick="selectRandomDrink()">랜덤</button>
+  <p id="drink-result" style="margin-top: 2em; font-weight: bold;"></p>
+  <button class="nav-button" onclick="goTo('dispenser')">나가기</button>
+</div>
+
+    <!-- 영화관 : 음료 디스펜서 2 (음료 공모전) -->
+  <div id="dispenser2" class="hidden">
+  <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
+  "다음 주의 랜덤 음료 공모전 테마는... ＜좋아하는 사람의 마음을 사로잡기 위한 음료＞! <br>유언집행자 여러분의 많은 참여 바랍니다!"<br><br>...라고 쓰여 있다. 한 사람당 2개까지 응모 가능한 모양이다.</p>
+   <input type="text" id="gongmo">
+  <div id="gongmobox" style="display: block; margin-top: 1em;">
+  <button onclick="addgongmo()">확인</button>
+  </div>
+    <p id="gongmo-result"></p>
+  <button class="nav-button" onclick="goTo('dispenser')">나가기</button>
+</div>
+
+    <!-- 2층 --> 
+    <div id="2ndfloor" class="hidden">
+    <p><span style="font-weight: bold;">[2층]</span><br><br>왼쪽 복도는 내빈용 객실로, 오른쪽 복도는 회의실로 이어진다.<br>2층은 이미 둘러보았으니 다른 층을 확인하자.</p>
+    <button onclick="goTo('elevator')">엘리베이터</button><br>
+ </div>     
+  
+    <!-- 3층 --> 
+    <div id="3rdfloor" class="hidden">
+    <p><span style="font-weight: bold;">[3층]</span><br><br>3층으로 올라오면, 한눈에 봐도 굉장히 다채로운 시설이 있음을 확인할 수 있다.<br>여러 개의 방문에 반짝거리는 문패가 붙어 있는데, 그야말로 '문화생활'에 걸맞는 시설들이다.<br>창문 너머로는 섬의 모습이 내려다보인다.<br>저 멀리 메모리얼 파크에 묘비 세 개가 늘어서 있다...</p>
+    <button onclick="goTo('elevator')">엘리베이터</button><br>
+    <button onclick="goTo('music')">음악실</button>
+    <button onclick="goTo('cinema')">영화관</button>
+    <button onclick="goTo('art')">미술실</button><br>
+    <button onclick="goTo('stage')">공연장</button>
+    <button onclick="goTo('library')">도서관</button>
+    <button onclick="goTo('lab')">자유연구실</button>
+ </div>     
+
+    <!-- 음악실 --> 
+    <div id="music" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]</span><br><br>다양한 악기와 음반을 모아 둔 음악실.<br>방음 시설이 완비된 <span style="color: #3f40d3;">녹음실</span>와 <span style="color: #3f40d3;">CD 감상 부스</span>가 설치되어 있다.<br>또, <span style="color: #3f40d3;">악기 보관실</span>이라고 쓰인 작은 문이 구석에 배치된 것이 보인다.</p>
+    <button onclick="goTo('recording')">녹음실</button>
+    <button onclick="goTo('cd')">CD 감상 부스</button>
+    <button onclick="goTo('inst')">악기 보관실</button><br>
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>이곳에서라면 누구나 스타가 될 수 있다!<br>노래 실력을 뽐낼 수 있는 마이크와 헤드셋이 구비된 녹음 부스.</p>
+    <button id="lulu" onclick="goTodel('recording1', 'lulu')">노래한다</button><br>
+    <button class="nav-button" onclick="goTo('music')">나가기</button>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording1" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 곡에 맞춰서 노래를 부를까?</p>
+    <button onclick="goTo('recording2')">잔잔한 발라드</button><br>
+    <button onclick="goTo('recording3')">신나는 댄스곡</button><br>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording2" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 마음가짐으로 노래를 부를까?</p>
+    <button onclick="goTo('recording4')">나만의 그루브를 담아서</button><br>
+    <button onclick="goTo('recording5')">음 하나하나에 심혈을 기울여서</button><br>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording3" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 마음가짐으로 노래를 부를까?</p>
+    <button onclick="goTo('recording4')">나만의 그루브를 담아서</button><br>
+    <button onclick="goTo('recording5')">음 하나하나에 심혈을 기울여서</button><br>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording4" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>그루비하게 열창했다! 점수는...<span id="recording-score-4"></span><br>열심히 노래하고 나니 허공에서 1코인이 떨어졌다. 공연의 답례인가...?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('music')">나가기</button>
+  </div>
+
+    <!-- 녹음 부스 --> 
+    <div id="recording5" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>섬세하게 열창했다! 점수는...<span id="recording-score-5"></span><br>열심히 노래하고 나니 허공에서 1코인이 떨어졌다. 공연의 답례인가...?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('music')">나가기</button>
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cd" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>좋아하는 노래를 감상할 수 있는 부스.<br>꽤 고급인 듯한 <span style="color: #3f40d3;">CD 플레이어</span>가 눈에 띈다. 헤드셋도 부착되어 있다.<br>벽 한켠에는 CD를 모아 놓은 <span style="color: #3f40d3;">장식장</span>이 보인다.</p>
+    <button onclick="goTo('cdplayer')">CD 플레이어</button>
+    <button onclick="goTo('cdlist')">장식장</button><br>
+    <button class="nav-button" onclick="goTo('music')">나가기</button>
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cdplayer" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>원하는 CD를 플레이어에 넣고 감상할 수 있는 공간이다. 어떤 음악을 들어 볼까?</p>
+    <button id="cdbtn" onclick="listencd('cdbtn')">CD를 재생한다</button><br>
+    <button class="nav-button" onclick="goTo('cd')">나가기</button>
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cd1" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>CD를 넣고 음악을 들었다.<br>역시 초세계급의 음악이라서일까, 듣는 것만으로도 다양한 감정이 느껴진다...<br>요 며칠 많은 일이 있었지만, 조금은 진정할 수 있을 것 같다.</p>
+    <button class="nav-button" onclick="goTo('cd')">나가기</button>
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cdlist" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>셀 수 없는 만큼 많은 CD의 향연이 펼쳐진다... 클래식, 팝송, 재즈, 전통음악까지.<br>가장 눈에 띄는 CD가 몇 개 있다. 골라 볼까?</p>
+    <button id="pickcd" onclick="goTodel('cdlist1', 'pickcd')">CD 고르기</button><br>
+    <button class="nav-button" onclick="goTo('cd')">나가기</button>
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cdlist1" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>딱 눈에 들어오는 것은 아래 두 개의 CD다. 마음에 드는 쪽을 골라 보자.</p>
+    <button onclick="goTo('cdlist2')">밴드 딥 블루의 '바다 위에서'</button>
+    <button onclick="goTo('cdlist2')">세토 아이비가 참여한 콰르텟 연주 모음집</button>   
+  </div>
+
+    <!-- CD부스 --> 
+    <div id="cdlist2" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>CD를 골랐다. 이제 재생할 일만 남았다.</p>
+    <button class="nav-button" onclick="goTo('cd')">나가기</button>
+  </div>
+
+    <!-- 악기 보관실 --> 
+    <div id="inst" class="hidden">
+    <p><span style="font-weight: bold;">[음악실]/[악기 보관실]</span><br><br>다양한 악기가 보관된 곳.<br>악기의 보관에 최적화된 습도와 온도를 유지하고 있다.<br>이곳에 체류하는 초세계급이라면 어떤 악기든 자유롭게 빌릴 수 있는 모양이다.</p>
+    <button class="nav-button" onclick="goTo('music')">나가기</button>
+  </div>
+
+
+
+      
+    <!-- 영화관 --> 
+    <div id="cinema" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]</span><br><br>소규모지만, 제법 영화관 분위기가 나는 <span style="color: #3f40d3;">스크린</span>과 관람용 <span style="color: #3f40d3;">좌석</span>이 설치된 공간이다.<br>한쪽에는 <span style="color: #3f40d3;">팝콘 기계</span>까지 설치되어 있고, 그 옆에는 예전에 레스토랑에 있었던 <span style="color: #3f40d3;">음료 디스펜서 v2.0</span>도 옮겨 와 있다. v2.0...?</p>
+    <button onclick="goTo('screen')">스크린</button>
+    <button onclick="goTo('seat')">좌석</button>    
+    <button onclick="goTo('pop')">팝콘 기계</button>    
+    <button onclick="goTo('dispenser')">음료 디스펜서 v2.0</button><br>      
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+    </div>   
+
+    <!-- 스크린 --> 
+    <div id="screen" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[스크린]</span><br><br>진짜 영화관의 스크린 규모는 아니지만, 그래도 기분을 내기에는 좋을 법한 대형 스크린이다.<br>가끔 현실을 잊고 싶을 때는 여기에 와서 영화를 시청하는 것도 좋은 선택일 것 같다...</p>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+
+
+    <!-- 좌석 --> 
+    <div id="seat" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>리클라이닝 시스템이 완비된 최신식 좌석이다.<br>앉아 보면 무척 편하다. 낮잠을 자기에도 딱일 정도.<br>그런데 영화관 가장 구석을 보면 수상한 좌석이 하나 놓여 있다...<br><br>《강한 자만 앉을 수 있는 좌석》...?</p>
+    <button onclick="goTo('seat1')">강한 자만 앉을 수 있는 좌석</button><br>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+    <!-- 좌석1 --> 
+    <div id="seat1" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>좌석을 확인하면, 공연장이나 영화관에서 흔히 볼 수 있는 접이식 의자지만...<br>어째서인지 등받이와 좌석이 굉장히 강한 힘으로 고정되어 있다.<br>여기 앉으려면 온 힘을 다해 접이식 의자를 펴야 할 것 같다...<br>앉으려고 시도해 볼까?</p>
+    <button id="stbtn" onclick="strongseat('stbtn')">앉으려고 시도한다</button><br>
+    <button class="nav-button" onclick="goTo('seat')">나가기</button>
+  </div>
+
+
+    <!-- 좌석2 --> 
+    <div id="seat2" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>하지만 의자는 조금도 움직이지 않는다!<br>억지로 펴려고 하다가 뒤로 나동그라지고 말았다. 아야야...<br>아무도 안 봤겠지...?</p>
+    <button class="nav-button" onclick="goTo('seat')">나가기</button>
+  </div>
+
+    <!-- 좌석3 --> 
+    <div id="seat3" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>하지만 의자는 조금도 움직이지 않는다!<br>아직 '강한 자'가 되기에는 힘이 부족하다...<br>더 강해진 다음에 시도하도록 하자.</p>
+    <button class="nav-button" onclick="goTo('seat')">나가기</button>
+  </div>
+
+    <!-- 좌석4 --> 
+    <div id="seat4" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>힘에는 자신이 있지만, 이 의자, 굉장한 호적수다...!<br>하지만 사투 끝에 겨우 의자를 펴고 위에 앉을 수 있었다.<br>강한 자는 어떤 의자 위에도 앉을 수 있는 법이다...<br>의자를 펴고 나니, 좌석 사이에 무언가 걸려 있었는지 땅으로 떨어지는 소리가 났다.<br>이건... 코인이다!<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+  <!-- 팝콘 --> 
+    <div id="pop" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>영화를 볼 때는 역시 팝콘이 빠질 수 없지! 마음껏 팝콘을 뽑을 수 있는 기계다.<br>'30여 가지 맛이 준비되어 있습니다' 라고 적혀 있다.<br>그런데... 버튼은 한 개뿐이다.</p>
+    <button id="ppbtn" onclick="getpopcorn('ppbtn')">팝콘을 뽑는다</button><br>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+    <!-- 팝콘 --> 
+    <div id="pop1" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '고수녹즙파프리카맛'이라고 쓰여 있다.<br>이게... 대체 무슨 맛이지?</p>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+    <!-- 팝콘 --> 
+    <div id="pop2" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '솔트 카라멜 맛'이라고 쓰여 있다.<br>고소하고 달콤 짭짤한 향기가 풍긴다... 운이 좋았다!</p>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+
+    <!-- 팝콘 --> 
+    <div id="pop3" class="hidden">
+    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '소금 맛'이라고 쓰여 있다.<br>평범하지만 이 정도면 나쁘지 않은가?</p>
+    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  </div>
+  
+    <!-- 미술실 --> 
+    <div id="art" class="hidden">
+    <p><span style="font-weight: bold;">[미술실]</span><br><br>예술적 소양을 함양할 수 있는 공간. 이곳저곳 이젤과 화구가 놓여 있다.<br>크게 <span style="color: #3f40d3;">작업실</span>과 <span style="color: #3f40d3;">전시실</span>로 나누어져 있는 듯하다.</p>
+    <button onclick="goTo('atlier')">작업실</button>
+    <button onclick="goTo('museum')">전시실</button><br>  
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+    </div>   
+  
+<!-- 작업실 --> 
+<div id="atlier" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[작업실]</span><br><br>각종 화구와 질 좋은 종이가 준비된 작업실.<br>그림을 그리는 것은 물론이고, 조소나 도예까지 할 수 있도록 다양한 장비가 배치되어 있다.<br>평소 예술과 연이 없었던 사람이더라도 이곳에서는 새 취미를 찾을 수 있을지도...</p>
+<button id="gry" onclick="goTodel('atlier1', 'gry')">그림을 그린다</button><br>
+  <button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+  <!-- 작업실1 --> 
+<div id="atlier1" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[작업실]</span><br><br>예술혼을 불태우기 위한 작업을 시작했다.<br><br>허공에서 목소리가 들린다...<br><em>"멋진 작품이군요. 전시실에 특별 전시 공간을 만들어 전시해보도록 하겠습니다."</em><br><br>초세계급 화가의 그림 옆에 이 그림이...?</p>
+  <button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+<!-- 전시실 --> 
+<div id="museum" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>다양한 유명 작품들을 모아서 전시해 둔 곳이다.<br>레플리카가 많지만 진품도 섞여 있다.<br>초세계급 화가, 에이즈카 아키라의 <천사> 연작도 몇 점 볼 수 있는데... 이건 진품인가?</p>
+<button id="jns" onclick="goTodel('museum1', 'jns')">전시실 내부를 둘러본다</button><br>
+<button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+<!-- 전시실 --> 
+<div id="museum1" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>전시실 내부를 쭉 둘러보기로 했다. 어떻게 둘러볼까?</p>
+<button onclick="goTo('museum2')">모든 작품 설명을 꼼꼼히 읽는다</button><br>
+<button onclick="goTo('museum3')">나름대로 작품에 해석을 더해 본다</button><br>
+<button onclick="goTo('museum4')">작품을 손으로 만져 본다</button><br>
+</div>
+
+<!-- 전시실 --> 
+<div id="museum2" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>모든 작품을 열심히 관찰하며 둘러보았다.<br>시간은 굉장히 오래 걸렸지만... 머릿속에 지식이 가득해진 것 같다!</p>
+<button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+<!-- 전시실 --> 
+<div id="museum3" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>어려운 이야기는 일단 제쳐두고 나름대로 해석을 더하며 둘러보았다.<br>상상력이 관람을 한층 더 즐겁게 해 준다! 좋은 경험이었다.</p>
+<button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+<!-- 전시실 --> 
+<div id="museum4" class="hidden">
+<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br><em>"유언집행자 님, 전시실의 물건에 함부로 손을 대시면 안 됩니다."</em><br>공증인의 엄숙한 목소리가 들려왔다...<br>혼이 나고 말았다.</p>
+<button class="nav-button" onclick="goTo('art')">나가기</button>
+</div>
+
+    <!-- 공연장 --> 
+    <div id="stage" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]</span><br><br>원형 극장의 형태를 빌려온 공연장.<br>중앙의 <span style="color: #3f40d3;">무대</span>와 <span style="color: #3f40d3;">조명 관리실</span>, <span style="color: #3f40d3;">분장실</span>까지 제법 그럴싸하다.<br>구석에 <span style="color: #3f40d3;">'인생한컷'</span>이라고 쓰인 부스가 있다.</p>
+    <button onclick="goTo('mudae')">무대</button>
+    <button onclick="goTo('light')">조명 관리실</button>
+    <button onclick="goTo('makeup')">분장실</button>
+    <button onclick="goTo('onecut')">인생한컷</button><br>
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+  </div>
+
+    <!-- 공연장 인생한컷 --> 
+    <div id="onecut" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>즉석 사진을 인화할 수 있는 부스인 모양이다.<br>그런데... 인생 한 컷이라니 너무 짧지 않아?</p>
+    <button id="isnc" onclick="goTodel('onecut1', 'isnc')">사진을 찍는다</button><br>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+      <!-- 공연장 인생한컷 --> 
+    <div id="onecut1" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>제대로 준비할 틈도 없이 사진 촬영이 시작된다!<br>잠깐... 포즈는?</p>
+    <button onclick="goTo('onecut2')">자신있게!</button><br>
+    <button onclick="goTo('onecut3')">사랑스럽게!</button><br>
+    <button onclick="goTo('onecut4')">무난하게!</button><br>
+  </div>
+
+        <!-- 공연장 인생한컷 --> 
+    <div id="onecut2" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>당당하고 멋진 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
+    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
+  </div>
+
+          <!-- 공연장 인생한컷 --> 
+    <div id="onecut3" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>사랑스럽고 귀여운 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
+    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
+  </div>
+
+          <!-- 공연장 인생한컷 --> 
+    <div id="onecut4" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>무난하고 밋밋한 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
+    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
+  </div>
+  
+    <!-- 공연장 --> 
+    <div id="mudae" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>무대 위에 서자 다닥다닥 붙은 관객석이 눈에 들어온다.<br>지금은 아무도 앉아 있지 않지만, 이렇게 관객석에 둘러싸이는 것만으로도 조금 긴장이 될지도...<br>무대에 서고 나니, 중앙에 붙어 있는 <span style="color: #3f40d3;">작은 종이</span>가 보인다. 안내문인가?</p>
+    <button id="ahffk" onclick="dodo('ahffk')">공연한다</button><br>
+    <button onclick="goTo('paper')">작은 종이</button><br>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+    <!-- 작은 종이 --> 
+    <div id="paper" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>"분장실의 미션 상자를 이용해 만반의 준비를 마친 뒤, 무대에서 끼를 펼칠 것."</p>
+    <button class="nav-button" onclick="goTo('mudae')">나가기</button>
+  </div>
+
+
+    <!-- 공연장 --> 
+    <div id="mudae1" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>만반의 준비를 갖췄다...! 이제 남은 것은...</p>
+    <button id="stgbtn" onclick="onstage('stgbtn')">끼를 발산한다!!</button><br>
+  </div>
+
+   <!-- 공연장 --> 
+    <div id="onstage1" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>머리띠를 쓰고 무대에 선 것까지는 좋았지만...<br>너무 부끄러워! 이런 모습으로 끼를 발산할 수 있을 리 없다!<br>무대에서 내려오고 말았다...</p>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+   <!-- 공연장 --> 
+    <div id="onstage2" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>귀여운 머리띠를 쓰고 무대에 섰다.<br>아무도 없는 공연장에서 깜찍한 모습으로 끼를 발산하기...<br>강한 정신력으로 이겨낸다!!<br><br>최고의 무대를 선보였다.<br>스피커에서 박수 소리가 들려오더니... 2코인이 공중에서 떨어졌다!<br><span style="font-weight: bold;">2코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+   <!-- 공연장 --> 
+    <div id="onstage3" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>용기를 내어 무대에 올랐다.<br>하지만 이런 깜찍한 머리띠로 끼를 발산하라니... 평범하게 어렵잖아?<br>그래도 어떻게든 정신력을 짜내서 무대를 끝마쳤다.<br><br>스피커에서 박수 소리가 들려오더니... 1코인이 공중에서 떨어졌다!<br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+   <!-- 분장실 --> 
+    <div id="makeup" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>다양한 소품이 준비된 분장실.<br>무대 위에 올라가기 전에는 스타를 더 스타답게 만들어 주는 분장이 필수다.<br>의상이나 악세사리도 준비되어 있고, 메이크업을 위한 소품과 화장품도 늘어서 있다.<br>화장대 아래쪽에 작은 상자가 놓여 있는데...<br><span style="color: #3f40d3;">미션 상자</span>, 라고 쓰여 있다.</p>
+    <button onclick="goTo('makeup1')">미션 상자</button><br>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+   <!-- 분장실1 --> 
+    <div id="makeup1" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>상자를 열자 동물 머리띠가 들어 있다.<br>이걸 사용해서 미션을 수행하는 건가...?<br>우선 동물 머리띠를 골라야 할 것 같다...</p>
+    <button id="tkdwk" onclick="goTodel('makeup2', 'tkdwk')">머리띠 고르기</button><br>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+
+   <!-- 분장실2 --> 
+    <div id="makeup2" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>어떤 머리띠를 고를까?</p>
+    <button onclick="goTo('makeup3')">토끼 머리띠</button>
+    <button onclick="goTo('makeup4')">고양이 머리띠</button>
+    <button onclick="goTo('makeup5')">다람쥐 머리띠</button>
+  </div>
+
+   <!-- 분장실3 --> 
+    <div id="makeup3" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>깜찍한 토끼 머리띠를 손에 넣었다.</p>
+    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
+  </div>
+   <!-- 분장실4 --> 
+    <div id="makeup4" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>귀여운 고양이 머리띠를 손에 넣었다.</p>
+    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
+  </div>
+   <!-- 분장실5 --> 
+    <div id="makeup5" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>러블리한 다람쥐 머리띠를 손에 넣었다.</p>
+    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
+  </div>
+
+   <!-- 조명 --> 
+    <div id="light" class="hidden">
+    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>조명을 설정할 수 있는 방이다.<br>이 조명으로 나만이 빛나도록 하면... 시선을 한 번에 사로잡을 수 있다!</p>
+    <button class="nav-button" onclick="goTo('stage')">나가기</button>
+  </div>
+  
+    <!-- 도서관 --> 
+    <div id="library" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]</span><br><br>장서의 종류별로 정리된 책장이 숲처럼 펼쳐진다.<br>지식의 보고라고 불리기에 손색없을 정도의 대형 도서관.<br><span style="color: #3f40d3;">열람실</span> 안에 들어가거나 <span style="color: #3f40d3;">책장</span>에서 책을 고를 수 있을 것 같다.</p>
+    <button onclick="goTo('readroom')">열람실</button>
+    <button onclick="goTo('bookshelf')">책장</button><br>
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+    </div>   
+
+    <!-- 열람실 --> 
+    <div id="readroom" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[열람실]</span><br><br>앉아 있기 좋은 안락의자와 독서대 등을 갖춘 열람실.<br>여기라면 바깥의 방해를 받지 않고 얼마든지 독서에 빠져 있을 수 있다.<br>그런데 열람실 벽에 붙어 있는 <span style="color: #3f40d3;">포스터</span>가 신경쓰인다. 이건 뭐지?</p>
+    <button onclick="goTo('poster')">포스터</button><br>
+    <button class="nav-button" onclick="goTo('library')">나가기</button>
+    </div>   
+
+    <!-- 열람실 --> 
+    <div id="poster" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[열람실]</span><br><br>《미래기관 내 대출 인기 도서 순위》<br><br>1위. 『초세계급이 재능을 숨김』<br>2위. 『환생했더니 기록체가 되었습니다만?!』<br>3위. 『나 혼자 1지부 1짱』<br><br>이 책들이 정말 대출 순위권 안이라고...?</p>
+    <button class="nav-button" onclick="goTo('library')">나가기</button>
+    </div>   
+
+    <!-- 책장 --> 
+    <div id="bookshelf" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>다양한 언어의 책이 꽂혀 있는 책장.<br>쉽게 읽을 수 있는 책들도 있고, 전공자가 아니면 이해할 수 없는 수준의 전문서적도 있다.<br>평생 책만 읽어도 다 읽어치울 수 없을 것 같은 양이다.<br>서가별로 추천도서도 모아 둔 모양인데, 한번 책을 골라 볼까?</p>
+    <button onclick="goTo('bookshelf1')">문학 서가의 추천도서</button><br>
+    <button onclick="goTo('bookshelf2')">자연과학 서가의 추천도서</button><br>
+    <button onclick="goTo('bookshelf3')">사회과학 서가의 추천도서</button><br>
+    <button class="nav-button" onclick="goTo('library')">나가기</button>
+    </div>   
+
+    <!-- 책장 --> 
+    <div id="bookshelf1" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>문학 서가의 추천도서는...<br>붉은 머리의 체스마스터가 각 분야의 천재들을 한 명씩 쓰러뜨리는 내용의 소설이다.<br>세상의 모든 분야를 섭렵하고 만 체스마스터는 왕좌에 올라앉아 도전자를 기다리고 있다고 한다.<br>모든 내용은 허구이며 실제 인물을 바탕으로 하고 있지 않다고 적혀 있다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+
+    <!-- 책장 --> 
+    <div id="bookshelf2" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>자연과학 서가의 추천도서는...<br>화산학자들에 대한 이야기이다.<br>화산학자들은 성격이 화산 같다는 이야기가 있다고 쓰여 있다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+
+    <!-- 책장 --> 
+    <div id="bookshelf3" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>사회과학 서가의 추천도서는...<br>'친구 100명 사귀는 100가지 방법'이라는 띠지를 두른 자기계발서이다.<br>100명의 친구를 사귀려면 한 사람 한 사람에 맞는 100가지 방법이 필요하다는 무난한 내용의 책이다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+
+    <!-- 자유연구실 --> 
+    <div id="lab" class="hidden">
+    <p><span style="font-weight: bold;">[자유연구실]</span><br><br>학자와 연구자들을 위한 자유연구실.<br>딱 봐도 어려워 보이는 장치들과 함께 <span style="color: #3f40d3;">고성능 컴퓨터</span>와 <span style="color: #3f40d3;">약품 보관실</span>이 보인다. 함부로 건드리면 안 될 것 같다...</p>
+    <button onclick="goTo('supercomputer')">고성능 컴퓨터</button>
+    <button onclick="goTo('medicine')">약품 보관실</button><br>
+    <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
+    </div>   
+
+    <!-- 슈퍼컴 --> 
+    <div id="supercomputer" class="hidden">
+    <p><span style="font-weight: bold;">[자유연구실]/[고성능 컴퓨터]</span><br><br>크기부터가 굉장히 큰 고성능 컴퓨터.<br>평범한 사람이라면 어떻게 다루는지조차 알 수 없을 것이다.<br>이 대단한 컴퓨터도 인터넷에는 연결되어 있지 않은 모양이다...</p>
+    <button class="nav-button" onclick="goTo('lab')">나가기</button>
+    </div>   
+
+   <!-- 약품보관실 --> 
+    <div id="medicine" class="hidden">
+    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>어려운 이름의 약품들이 잔뜩 늘어서 있는 약품 보관실이다.<br>잘못 만졌다가는 부상을 입을 수도 있으니 각별히 주의할 것.<br>연구실 구석에 <span style="color: #3f40d3;">쓰레기통</span>이 놓여 있다.</p>
+    <button onclick="goTo('trash')">쓰레기통을 연다</button><br>
+    <button class="nav-button" onclick="goTo('lab')">나가기</button>
+    </div>   
+
+   <!-- 쓰레기통 --> 
+    <div id="trash" class="hidden">
+    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>쓰레기통에는 화학 폐기물을 어떻게 처리해야 하는지에 대한 복잡한 설명이 적혀 있다.<br>아직 여기 무언가를 버린 사람은 없는 것 같지만...</p>
+    <button id="tartar" onclick="goTodel('trashcan', 'tartar')">쓰레기통을 뒤진다</button><br>
+    <button class="nav-button" onclick="goTo('medicine')">나가기</button>
+    </div>   
+
+   <!-- 쓰레기통 --> 
+    <div id="trashcan" class="hidden">
+    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>쓰레기통 안에 손을 넣고 휘적휘적 저었다.<br>아무리 빈 쓰레기통이라지만, 빈말로라도 좋다고는 말할 수 없는 광경이다...<br>열심히 뒤지다 보니 손에 무언가가 집힌다. 이건... 코인?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+<button class="nav-button" onclick="goTo('trash')">나가기</button>
+    </div>   
+
+    
+<!-- !!!!여기서부터 스크립트!!!! -->
+  <script>
+  // 애니메이션이 끝난 뒤 hover 작동 허용
+  document.querySelectorAll('.menu-button').forEach(button => {
+    button.addEventListener('animationend', () => {
+      button.style.pointerEvents = 'auto';
+    });
+  });
+//★★★★★[중요]유저 데이터★★★★★
+    const userData = {
+      mung0515: {
+        class: "피자마스터 으믕",
+        id: "ThePizzaMaster",
+        STR: 6,
+        INT: 6,
+        OBS: 6,
+        POW: 6,
+        LUC: 6,
+        key: 0,
+        coin: 0
+      },
+      sese0409: {
+        class: "감자마스터 세세",
+        id: "Linguistics",
+        STR: 1,
+        INT: 1,
+        OBS: 1,
+        POW: 1,
+        LUC: 1,
+        key: 0,
+        coin: 0
+      },
+        erne0409: {
+        class: "재해과학자 에르네스토 프로켈",
+        id: "NoClassToday",
+        STR: 3,
+        INT: 3,
+        OBS: 3,
+        POW: 3,
+        LUC: 3,
+        key: 0,
+        coin: 0
+      },
+        liva3561: {
+        class: "??? ?",
+        id: "Untitled",
+        STR: 3,
+        INT: 3,
+        OBS: 3,
+        POW: 3,
+        LUC: 3,
+        key: 0,
+        coin: 0}
+      ,
+              taei0515: {
+        class: "퇴마사 태이",
+        id: "Taei",
+        STR: 5,
+        INT: 1,
+        OBS: 1,
+        POW: 3,
+        LUC: 5,
+        key: 0,
+        coin: 0}
+      ,
+        pola2469: {
+        class: "프론트맨 폴라리스 래피드",
+        id: "polaris",
+        STR: 5,
+        INT: 4,
+        OBS: 4,
+        POW: 1,
+        LUC: 5,
+        key: 0,
+        coin: 0}
+      ,
+        siny1538: {
+        class: "약사 요시다 신",
+        id: "SIN",
+        STR: 2,
+        INT: 5,
+        OBS: 3,
+        POW: 4,
+        LUC: 2,
+        key: 0,
+        coin: 0}
+      ,
+        edit9947: {
+        class: "과학수사관 에디트 발랑틴",
+        id: "edit",
+        STR: 4,
+        INT: 4,
+        OBS: 4,
+        POW: 4,
+        LUC: 4,
+        key: 0,
+        coin: 0}
+      ,
+        maur3085: {
+        class: "소매치기 모리스 레비",
+        id: "Levi",
+        STR: 3,
+        INT: 2,
+        OBS: 4,
+        POW: 2,
+        LUC: 4,
+        key: 0,
+        coin: 0}
+      ,
+        jaha4287: {
+        class: "스포츠 트레이너 원자한",
+        id: "Jahan",
+        STR: 4,
+        INT: 4,
+        OBS: 6,
+        POW: 3,
+        LUC: 2,
+        key: 0,
+        coin: 0}
+      ,
+        wied6391: {
+        class: "필체감정사 비더 바이나흐텐",
+        id: "WEIHNACHT",
+        STR: 1,
+        INT: 4,
+        OBS: 6,
+        POW: 1,
+        LUC: 2,
+        key: 0,
+        coin: 0}
+      ,
+        isad2597: {
+        class: "행정가 이사도르 도슨",
+        id: "FT06_dawson",
+        STR: 3,
+        INT: 4,
+        OBS: 5,
+        POW: 6,
+        LUC: 3,
+        key: 0,
+        coin: 0}
+      ,
+        zede0753: {
+        class: "생존전문가 제더카이어 어비스",
+        id: "AtoZ",
+        STR: 5,
+        INT: 3,
+        OBS: 5,
+        POW: 5,
+        LUC: 3,
+        key: 0,
+        coin: 0}
+      ,
+        akir2740: {
+        class: "화가 에이즈카 아키라",
+        id: "akila",
+        STR: 1,
+        INT: 5,
+        OBS: 5,
+        POW: 5,
+        LUC: 4,
+        key: 0,
+        coin: 0},
+              rust8164: {
+        class: "우체부 루스티카 테일윈드",
+        id: "RUSTIC4",
+        STR: 4,
+        INT: 1,
+        OBS: 4,
+        POW: 3,
+        LUC: 5,
+        key: 0,
+        coin: 0},
+              seto2566: {
+        class: "피아니스트 세토 아이비",
+        id: "IVY",
+        STR: 3,
+        INT: 4,
+        OBS: 5,
+        POW: 3,
+        LUC: 2,
+        key: 0,
+        coin: 0},
+              kuki4917: {
+        class: "해커 쿠루미 J. 쿠로키",
+        id: "MACHO_KUKI",
+        STR: 3,
+        INT: 5,
+        OBS: 4,
+        POW: 3,
+        LUC: 1,
+        key: 0,
+        coin: 0},
+              nuri2925: {
+        class: "체스마스터 하누리",
+        id: "nuriNOW",
+        STR: 1,
+        INT: 4,
+        OBS: 3,
+        POW: 5,
+        LUC: 4,
+        key: 0,
+        coin: 0},
+              rose1928: {
+        class: "수영선수 미아 콜린스",
+        id: "RosePinkDolphin",
+        STR: 4,
+        INT: 2,
+        OBS: 5,
+        POW: 4,
+        LUC: 3,
+        key: 0,
+        coin: 0},
+              ivan2992: {
+        class: "수의사 이반 카르포프",
+        id: "ivan",
+        STR: 4,
+        INT: 5,
+        OBS: 5,
+        POW: 3,
+        LUC: 2,
+        key: 0,
+        coin: 0},
+              bury5792: {
+        class: "고고학자 베리",
+        id: "Berry",
+        STR: 5,
+        INT: 5,
+        OBS: 5,
+        POW: 5,
+        LUC: 5,
+        key: 0,
+        coin: 0},
+                 fome0838: {
+        class: "탐험가 포멜하우트 에빌라",
+        id: "Explorer",
+        STR: 5,
+        INT: 3,
+        OBS: 3,
+        POW: 5,
+        LUC: 2,
+        key: 0,
+        coin: 0} 
+    };
+
+    let currentUser = null;
+    let pageHistory = [];
+    const outputIds = ['gym-result', 'library-result'];
+    
+//★★★★★로그인★★★★★
+    function checkLogin() {
+      const id = document.getElementById('id-input').value;
+      if (userData[id]) {
+        currentUser = userData[id];
+        showWelcomeMessage(currentUser.class);
+      } else {
+        document.getElementById('login-error').innerText = "아이디가 일치하지 않습니다.";
+      }
+    }
+  
+//★★★★★환영 메시지★★★★★
+    function showWelcomeMessage(userClass) {
+      document.getElementById('login-page').classList.add('hidden');
+      const container = document.createElement('div');
+      container.classList.add('typewriter');
+      container.innerHTML = `초세계급 ${userClass} 님을 환영합니다. . .`;
+      document.body.appendChild(container);
+      setTimeout(() => {
+        container.remove();
+        showUserInfo();
+        document.getElementById('main-page').classList.remove('hidden');
+        pageHistory.push('main-page');
+      }, 3600);
+    }
+//★★★★★유저 인포메이션 창★★★★★
+    function showUserInfo() {
+      const userBox = document.getElementById('user-display');
+      document.getElementById('user-class-line').innerHTML = `User ID: ${currentUser.id}`;
+      document.getElementById('coin-line').innerText = `Coin: ${currentUser.coin || 0}`;
+      userBox.classList.remove('hidden');
+    }
+    function updateCoinDisplay() {
+      document.getElementById('coin-line').innerText = `Coin: ${currentUser.coin || 0}`;
+    }
+//★★★★★출력된 텍스트 아웃풋 창 넘어갈 때 지우기 (goTo 연동용)★★★★★
+    function clearOutputs() {
+      outputIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = '';
+      });
+    }
+
+//★★★★★goTo★★★★★
+function goTo(page) {
+  // 창 이동시 숨겨지지 않는 디스플레이 설정
+  const exceptions = ['user-display','persistent-nav','bgm-player','bgm-player button'];  
+  document.querySelectorAll('div').forEach(div => {
+    const isException = exceptions.includes(div.id) || div.closest('#user-display') || div.closest('#persistent-nav');
+    if (!isException) {
+      div.classList.add('hidden');
+    }
+  });
+  //지우고 페이드 인
+  const target = document.getElementById(page);
+  target.classList.remove('hidden');
+  target.classList.add('fade-in');
+  clearOutputs();
+  pageHistory.push(page);
+  //[중요]특정 페이지 진입 시 스탯(코인 등)변동
+  if (['onstage3','recording4','recording5','trashcan','seat4'].includes(page)) {
+    currentUser.coin = (currentUser.coin || 0) + 1;
+    updateCoinDisplay();
+  }
+  if (['onstage2','notary5'].includes(page)) {
+    currentUser.coin = (currentUser.coin || 0) + 2;
+    updateCoinDisplay();
+  }
+  if (['cdlist2'].includes(page)) {
+    currentUser.cd = 1;
+    updateCoinDisplay();
+  }
+    if (['atlier1'].includes(page)) {
+    currentUser.art = 1;
+    updateCoinDisplay();
+  }
+    if (['makeup3'].includes(page)) {
+    currentUser.acc = "토끼 머리띠";
+    updateCoinDisplay();
+  }
+      if (['makeup4'].includes(page)) {
+    currentUser.acc = "고양이 머리띠";
+    updateCoinDisplay();
+  }
+      if (['makeup5'].includes(page)) {
+    currentUser.acc = "다람쥐 머리띠";
+    updateCoinDisplay();
+  }
+    if (['recording2'].includes(page)) {
+    currentUser.music = "발라드를";
+    updateCoinDisplay();
+  }
+      if (['recording3'].includes(page)) {
+    currentUser.music = "댄스곡을";
+    updateCoinDisplay();
+  }
+        if (['onecut2'].includes(page)) {
+    currentUser.photo = "당당한";
+    updateCoinDisplay();
+  }
+        if (['onecut3'].includes(page)) {
+    currentUser.photo = "사랑스러운";
+    updateCoinDisplay();
+  }
+        if (['onecut4'].includes(page)) {
+    currentUser.photo = "무난한";
+    updateCoinDisplay();
+  }
+    if (page === 'starting-point') {
+    document.getElementById('persistent-nav').style.display = 'flex';
+  }
+if (page === 'recording4') {
+  const scoreEl = document.getElementById('recording-score-4');
+  if (scoreEl) scoreEl.innerText = `${Math.floor(Math.random() * 101)}점!`;
+}
+if (page === 'recording5') {
+  const scoreEl = document.getElementById('recording-score-5');
+  if (scoreEl) scoreEl.innerText = `${Math.floor(Math.random() * 101)}점!`;
+}
+
+  //얘네는 버튼 없애기용인데 이렇게 하지 말고 goTodel 사용을 고려할 것 ...
+  const flowerButton = document.getElementById('flower-button-box');
+if (flowerButton) {
+  // 한 번이라도 헌화한 경우에는 다시 보이지 않음
+  flowerButton.style.display = (page === 'flowerpage') ? 'none' : 'block';
+}
+  const codebox = document.getElementById('codebox');
+if (page === 'notary4' && codebox) {
+  const alreadyUsed = codebox.getAttribute('data-used') === 'true';
+  codebox.style.display = alreadyUsed ? 'none' : 'block';
+}
+  document.getElementById('user-display').classList.remove('hidden');
+}
+  
+
+//★★★★★goTodel(이동과 동시에 버튼 삭제)★★★★★   
+function goTodel(targetPage, buttonId) {
+  const btn = document.getElementById(buttonId);
+  if (btn) btn.remove(); // 한 번만 지움
+  goTo(targetPage); // 기존 페이지 이동 로직 재사용
+}
+
+//★★★★★goToWithSound(페이지 이동 버튼 누를 때 효과음(일시) 재생)★★★★★   
+  function goToWithSound(page, soundFile) {
+      const audio = new Audio(soundFile);
+      audio.loop = false;
+      audio.volume = 0.3;
+      audio.play();
+      goTo(page);
+    }
+
+//★★★★★goToWithSound(페이지 이동 버튼 누를 때 효과음 계속해서 재생, 루프)★★★★★  
+let zzapseaAudio = null;
+let zzapportAudio = null;
+
+function goToWithSoundNL(page, soundFile) {
+  if (soundFile.includes('zzapsea.mp3')) {
+    zzapseaAudio = new Audio(soundFile);
+    zzapseaAudio.loop = true;
+    zzapseaAudio.play();
+  } else if (soundFile.includes('zzapport.mp3')) {
+    zzapportAudio = new Audio(soundFile);
+    zzapportAudio.loop = true;
+    zzapportAudio.play();
+  } else {
+    const audio = new Audio(soundFile);
+    audio.loop = true;
+    audio.play();
+  }
+  goTo(page);
+}
+
+//★★★★★해당 버튼을 누를 시, 페이지 이동과 동시에 zzapseaAudio 중지★★★★★
+function goToWithoutzzapsea(page) {
+  if (zzapseaAudio && !zzapseaAudio.paused) {
+    zzapseaAudio.pause();
+    zzapseaAudio.currentTime = 0;
+  }
+  if (zzapportAudio && !zzapportAudio.paused) {
+    zzapportAudio.pause();
+    zzapportAudio.currentTime = 0;
+  }
+  goTo(page);
+}
+
+//★★★★★goBack★★★★★  
+function goBack() {
+  if (pageHistory.length > 1) {
+    // 현재 페이지 제거
+    pageHistory.pop();
+    const prevPage = pageHistory[pageHistory.length - 1];
+
+    // 예외 요소들 (루트 + 내부 포함 전부 보호)
+    const persistentRoots = ['user-display', 'bgm-player', 'persistent-nav'];
+
+    // 모든 div를 숨기되, 예외 요소 또는 그 자식은 숨기지 않음
+    document.querySelectorAll('div').forEach(div => {
+      const isPersistent = persistentRoots.some(rootId => {
+        const rootEl = document.getElementById(rootId);
+        return rootEl && (div === rootEl || rootEl.contains(div));
+      });
+      if (!isPersistent) {
+        div.classList.add('hidden');
+      }
+    });
+
+    // 이전 페이지 보여주기
+    const target = document.getElementById(prevPage);
+    if (target) {
+      target.classList.remove('hidden');
+      target.classList.add('fade-in');
+    }
+
+    // 텍스트 강제 갱신 (혹시라도 브라우저 캐시가 날려버린 경우)
+    if (currentUser) {
+      const idLine = document.getElementById('user-class-line');
+      const coinLine = document.getElementById('coin-line');
+      if (idLine) idLine.innerText = `User ID: ${currentUser.id}`;
+      if (coinLine) coinLine.innerText = `Coin: ${currentUser.coin || 0}`;
+    }
+
+    // 출력 영역 초기화
+    clearOutputs();
+  }
+}
+
+
+
+
+//여기서부터 특정 장소에서 사용하도록 되어 있는 함수!!!!
+//★★★★★CD★★★★★
+function listencd(buttonId) {
+  if (currentUser.cd === 1) {
+    // 버튼 제거
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove();  // 단 한 번만 제거
+    goTo('cd1');
+  } else {
+    alert("CD를 가지고 있지 않다. 골라 오도록 하자.");
+  }
+}
+
+//★★★★★머리띠★★★★★
+function dodo(buttonId) {
+  if (currentUser.acc) {
+    // 버튼 제거
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove();  // 단 한 번만 제거
+    goTo('mudae1');
+  } else {
+    alert("준비물이 부족하다. 작은 종이의 내용을 읽어 보자.");
+  }
+}
+
+//★★★★공연하기★★★★
+function onstage(buttonId) {
+  if (currentUser.POW <= 2) {
+    goTo('onstage1');
+  } else if (currentUser.POW >= 4) {
+    goTo('onstage2');
+  } else {
+    goTo('onstage3');
+  }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
+}
+    
+//★★★★★퀴즈★★★★★
+function checkSecretCode() {
+  const input = document.getElementById('secret-code-input').value;
+  if (input === "초세계급이 재능을 숨김") { // 원하는 정답
+    const codebox = document.getElementById('codebox');
+    if (codebox) {
+      codebox.style.display = 'none';
+      codebox.setAttribute('data-used', 'true');  // ✅ 한 번 사용했음을 표시
+    }
+    goTo('notary5');
+  } else {
+    const result = document.getElementById('secret-code-result');
+    result.innerText = "공증인은 침묵하고 있다... 아무래도 이게 정답이 아닌 것 같다.";
+  }
+}    
+//★★★★★강한자의좌석★★★★★
+function strongseat(buttonId) {
+  if (currentUser.STR <= 2) {
+    goTo('seat2');
+  } else if (currentUser.STR >= 4) {
+    goTo('seat4');
+  } else {
+    goTo('seat3');
+  }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
+}
+
+//★★★★팝콘뽑기★★★★
+function getpopcorn(buttonId) {
+  if (currentUser.LUC <= 2) {
+    goTo('pop1');
+  } else if (currentUser.LUC >= 4) {
+    goTo('pop2');
+  } else {
+    goTo('pop3');
+  }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
+}
+
+//★★★★★음료 디스펜서★★★★★
+// 음료 효과음 공통
+let drinkAudio = new Audio("zzapdrink.mp3");
+function playDrinkSound() {
+  drinkAudio.pause();
+  drinkAudio.currentTime = 0;
+  drinkAudio.play();
+}
+// 일반 음료 선택 함수
+function selectDrink(type) {
+  const messages = {
+    coke: { title: "콜라", desc: "영화관에서는 콜라! 팝콘과의 궁합을 자랑하는 시원한 음료." },
+    "melon": { title: "메론 소다", desc: "약간의 인공적인 메론 향이 오히려 매력적인 탄산음료." },
+    "boricha": { title: "보리차", desc: "건강한 어른을 위한 무난한 음료." }
+  };
+  const msg = messages[type];
+  const resultBox = document.getElementById("drink-result");
+  resultBox.innerHTML = `<p><span style="font-weight: bold;">[${msg.title}]</span><br><br>${msg.desc}</p>`;
+  // 애니메이션 적용
+  resultBox.style.animation = "none";
+  void resultBox.offsetWidth;
+  resultBox.style.animation = "pop 0.6s ease-out";
+  playDrinkSound();
+}
+//랜덤 음료
+let randomClickCount = 0;
+const randomLimit = 3;
+function selectRandomDrink() {
+  if (randomClickCount >= randomLimit) {
+    document.getElementById("drink-result").innerText = "오늘의 사용 횟수를 초과한 모양이다.";
+    return;
+  }
+  const messages = [
+    { title: "간장 콜라", desc: "추천인 : 제더카이어 어비스" },
+    { title: "유니콘 프라페", desc: "추천인 : 미아 콜린스" },
+    { title: "된장국", desc: "추천인 : 미아 콜린스" },
+    { title: "괴상한 음료에 지친 당신을 치료해 줄 비타500", desc: "추천인 : 요시다 신" },
+    { title: "목넘김이 깔끔한 생수", desc: "추천인 : 요시다 신" },
+    { title: "탄산팥죽", desc: "추천인 : 스트로 베리" },
+    { title: "밴드 딥 블루가 그려진 캔커피", desc: "추천인 : 스트로 베리" },
+    { title: "위스키", desc: "추천인 : 이반 카르포프" },
+    { title: "보드카", desc: "추천인 : 이반 카르포프" },
+    { title: "누리표 누리자 에너지음료", desc: "추천인 : 하누리" },
+    { title: "누리표 복수의 붉은맛(※딸기맛)", desc: "추천인 : 하누리" },
+    { title: "팥맛 소다", desc: "추천인 : 폴라리스 래피드" },
+    { title: "두리안 주스", desc: "추천인 : 폴라리스 래피드" },
+    { title: "코코아", desc: "추천인 : 루스티카 테일윈드" },
+    { title: "딸기라떼", desc: "추천인 : 루스티카 테일윈드" },
+    { title: "아이스 위스키 커피", desc: "추천인 : 포멜하우트 에빌라" },
+    { title: "코코넛 간장 스무디", desc: "추천인 : 포멜하우트 에빌라" },
+    { title: "딸기잼", desc: "추천인 : ?" },
+    { title: "테트로도톡신 10mg", desc: "추천인 : 에디트 발랑틴" },
+    { title: "물 6L", desc: "추천인 : 에디트 발랑틴" },
+    { title: "아샷추", desc: "추천인 : 이사도르 도슨" },
+    { title: "바닷물", desc: "추천인 : 에르네스토 프로켈" },
+    { title: "마그마 라떼", desc: "추천인 : 에르네스토 프로켈" },
+    { title: "팥절미 라떼", desc: "추천인 : 태이" }
+  ];
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  const msg = messages[randomIndex];
+  const resultBox = document.getElementById("drink-result");
+  resultBox.innerHTML = `<p><span style="font-weight: bold;">[${msg.title}]</span><br><br>${msg.desc}</p>`;
+  // 애니메이션 재적용
+  resultBox.style.animation = "none";
+  void resultBox.offsetWidth;
+  resultBox.style.animation = "pop 0.6s ease-out";
+  playDrinkSound();
+  // 클릭 횟수 증가
+  randomClickCount++;
+  if (randomClickCount >= randomLimit) {
+    document.getElementById("random-button").disabled = true;
+    document.getElementById("random-button").innerText = "사용 불가";
+  }
+}
+
+//랜덤음료공모전
+function addgongmo() {
+  const input = document.getElementById('gongmo').value.trim();
+  // currentUser.gongmo가 없다면 초기화
+  if (!currentUser.gongmo) {
+    currentUser.gongmo = [];
+  }
+  // 2번 이상 제출 시 제한
+  if (currentUser.gongmo.length >= 2) {
+    alert("이미 공모전에 음료를 제출했습니다!");
+    return;
+  }
+  if (input === "") {
+    alert("음료 이름을 입력해 주세요.");
+    return;
+  }
+  // 제출 처리
+  currentUser.gongmo.push(input);
+  document.getElementById('gongmo-result').innerText = "공모전에 음료를 제출했습니다.";
+  document.getElementById('gongmo').value = "";
+}
+
+  </script>
+<script src="final-report.js"></script>
+</body>
+</html>
