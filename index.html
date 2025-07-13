@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Chapter 2-DAILY LIFE</title>
+  <title>Chapter 3-DAILY LIFE</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
   <style>
 
@@ -426,7 +426,7 @@
   
     <!-- 3층 --> 
     <div id="3rdfloor" class="hidden">
-    <p><span style="font-weight: bold;">[3층]</span><br><br>3층으로 올라오면, 한눈에 봐도 굉장히 다채로운 시설이 있음을 확인할 수 있다.<br>여러 개의 방문에 반짝거리는 문패가 붙어 있는데, 그야말로 '문화생활'에 걸맞는 시설들이다.<br>창문 너머로는 섬의 모습이 내려다보인다.<br>저 멀리 메모리얼 파크에 묘비 세 개가 늘어서 있다...</p>
+    <p><span style="font-weight: bold;">[3층]</span><br><br>3층으로 올라오면, 한눈에 봐도 굉장히 다채로운 시설이 있음을 확인할 수 있다.<br>여러 개의 방문에 반짝거리는 문패가 붙어 있는데, 그야말로 '문화생활'에 걸맞는 시설들이다.<br>창문 너머로는 섬의 모습이 내려다보인다.<br>저 멀리 메모리얼 파크에 묘비 다섯 개가 늘어서 있다...</p>
     <button onclick="goTo('elevator')">엘리베이터</button><br>
     <button onclick="goTo('music')">음악실</button>
     <button onclick="goTo('cinema')">영화관</button>
@@ -520,7 +520,111 @@
     <p><span style="font-weight: bold;">[자유연구실]</span><br><br>학자와 연구자들을 위한 자유연구실.<br>전과 크게 달라진 점은 없다.</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
     </div>   
-    
+
+
+
+      <!-- 4층 --> 
+    <div id="4thfloor" class="hidden">
+    <p><span style="font-weight: bold;">[4층]</span><br><br>공증인이 '리프레시 존' 이라고 불렀던 4층.<br>엘리베이터에서 내리자마자 눈에 들어오는 것은 대형 <span style="color: #3f40d3;">트레이닝 룸</span>이다.<br>복도를 왼쪽으로 돌면 <span style="color: #3f40d3;">카페</span>가 있고, 오른쪽으로 돌면 <span style="color: #3f40d3;">스파</span>라고 적힌 방이 나온다.<br>그리고 엘리베이터 뒤편까지 한 바퀴를 빙 돌면...<span style="color: #3f40d3;">문패에 아무것도 쓰여 있지 않은 방</span>이 나타난다.</p>
+    <button onclick="goTo('elevator')">엘리베이터</button><br>
+    <button onclick="goTo('training')">트레이닝 룸</button>
+    <button onclick="goTo('cafe')">카페</button>
+    <button onclick="goTo('spa')">스파</button><br>
+    <button onclick="goTo('strange')">정체불명의 방</button>
+ </div>  
+  
+ <!-- 트레이닝룸 --> 
+<div id="training" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]</span><br><br>다양한 <span style="color: #3f40d3;">운동기구</span>로 체력을 기를 수 있는 트레이닝 룸.<br>머리가 복잡해 힘들 때는 땀을 흘리며 잊어 보는 것은 어떨까?<br>트레이닝 룸 안쪽에는 다른 시설로 이어지는 복도가 나 있다.<br><span style="color: #3f40d3;">수영장</span>과 <span style="color: #3f40d3;">클라이밍장</span>이 있는 것 같다.<br>한쪽에는 <span style="color: #3f40d3;">샤워실</span>도 배치되어 있다.</p>
+    <button onclick="goTo('gigu')">운동기구</button>
+    <button onclick="goTo('swimming')">수영장</button>
+    <button onclick="goTo('climbing')">클라이밍장</button>
+    <button onclick="goTo('shower')">샤워실</button><br>
+    <button class="nav-button" onclick="goTo('4thfloor')">나가기</button>
+ </div> 
+
+   <!-- 운동기구 --> 
+<div id="gigu" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]</span><br><br>
+다채로운 종류의 운동기구가 놓여 있다.<br>간단한 런닝머신이나 덤벨 같은 것도 있지만, 초보자는 도무지 사용 방법을 알 수 없을 듯한 무시무시한 기구들도 보인다.<br>자세가 틀어졌을 때는 <span style="color: #3f40d3;">거울</span>을 보며 교정해 보자.<br>이왕 온 김에 가볍게 운동을 하고 가는 것도 나쁘지는 않을 것 같은데... 시도해 볼까?</p>
+    <button onclick="goTo('running')">런닝머신</button>
+    <button onclick="goTo('bench')">벤치프레스</button>
+    <button onclick="goTo('whatever')">정체를 알 수 없는 운동기구</button>
+      <button onclick="goTo('mirror')">거울</button><br>
+    <button class="nav-button" onclick="goTo('training')">나가기</button>
+ </div> 
+
+     <!-- 런닝머신 --> 
+<div id="running" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[런닝머신]</span><br><br>
+평범한 런닝머신이다.<br>사용자의 컨디션에 맞춘 자동 안내 기능이 탑재되어 있다고 쓰여 있다.</p>
+    <button id="runbtn" onclick="goTodel('running1', 'runbtn')">런닝머신을 탄다</button><br>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
+     <!-- 런닝머신 --> 
+<div id="running1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[런닝머신]</span><br><br>
+런닝머신에 올라타 작동 버튼을 누르자... 런닝머신에 부착된 스피커로 공증인의 목소리가 흘러나오기 시작했다...<br><em>"안녕하세요, 유언집행자 님. 가벼운 조깅 코스를 시작하도록 하겠습니다."</em></p>
+    <button onclick="goTo('running2')">꾹 참고 계속 탄다</button>
+    <button onclick="goTo('runningfail')">그만둔다</button><br>
+ </div> 
+
+     <!-- 런닝머신 --> 
+<div id="running2" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[런닝머신]</span><br><br>
+<em>"처음부터 무리하지 않고 자신에게 맞는 올바른 강도를 찾아 나가는 과정이 중요합니다."</em><br><br>공증인의 목소리가 끊임없이 들리며 격려와 건강 팁을 안내해 준다...</p>
+    <button onclick="goTo('running3')">꾹 참고 계속 탄다</button>
+    <button onclick="goTo('runningfail')">역시 그만둔다</button><br>
+ </div> 
+
+     <!-- 런닝머신 --> 
+<div id="running2" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[런닝머신]</span><br><br>
+공증인이 뭐라고 말하든 꾹 참아가며 런닝을 마쳤다.<br>어쩐지 몸 말고 튼튼한 멘탈도 단련된 기분이다...<br>런닝머신을 전부 타고 나자, 가벼운 짤랑 소리와 함께 어디선가 동전 하나가 떨어졌다.<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
+     <!-- 런닝머신 --> 
+<div id="runningfail" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[런닝머신]</span><br><br>
+종료 버튼을 퍽 누르자 공증인의 목소리가 즉시 꺼졌다. 하지만...<br><br>"이런. 건강에 대한 조언을 무시하시다니 유감입니다, 유언집행자 님."<br><br>이번에는 트레이닝룸의 스피커로 공증인의 목소리가...<br>이 런닝머신, 사실은 멘탈 훈련이었나?</p>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
+     <!-- 벤.프 --> 
+<div id="bench" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[벤치프레스]</span><br><br>
+근력 운동을 할 수 있는 벤치프레스.<br>벤치에 등을 대고 누운 채로 역기를 들어올리면 된다.</p>
+    <button id="benchbtn" onclick="goTodel('bench1', 'benchbtn')">벤치프레스를 사용한다</button><br>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
+     <!-- 벤.프 --> 
+<div id="bench1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[벤치프레스]</span><br><br>
+어떡할까</p>
+    <button id="benchbtn" onclick="goTodel('bench1', 'benchbtn')">벤치프레스를 사용한다</button><br>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+
+     <!-- 이상한 기구 --> 
+<div id="whatever" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[정체불명의 기구]</span><br><br>
+이건 대체 뭐지? 여기저기 핸들과 손잡이가 부착되어 있고, 무거워 보이는 추가 몇 개 달려 있다.<br>어떻게 사용하는 것인지 짐작도 가지 않는다...</p>
+    <button id="wevbtn" onclick="goTodel('whatever1', 'wevbtn')">사용한다</button><br>
+    <button class="nav-button" onclick="goTo('gigu')">나가기</button>
+ </div> 
+  
+     <!-- 이상한 기구 --> 
+<div id="whatever1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[운동기구]<br>[정체불명의 기구]</span><br><br>
+기구 앞에 서자 스르륵... 기계 몸체가 갈라지듯이 열렸다.<br>설마 이 안으로 들어가라는 건가...?</p>
+    <button onclick="goTo('whatever2')">들어간다</button>
+ </div> 
+  
+
+  
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
   // 애니메이션이 끝난 뒤 hover 작동 허용
