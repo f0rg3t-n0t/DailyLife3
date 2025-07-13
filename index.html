@@ -318,14 +318,14 @@
   <div id="inside" class="hidden">
     <p><span style="font-weight: bold;">[건물 1층]</span><br><br>대리석 바닥이 반짝거리는 건물 1층.<br>정면에 방문객을 맞이하는 <span style="color: #3f40d3;">로비</span>가 보이고, 로비 뒤편에는 뒤편에는 유리로 된 <span style="color: #3f40d3;">엘리베이터</span>가 배치되어 있어 시선이 저절로 천장을 향한다.<br>더 안쪽에 있는 복도는 <span style="color: #3f40d3;">레스토랑</span>으로 이어지는 듯하다.</p>
     <button onclick="goTo('lobby')">로비</button>
-    <button onclick="goTo('elevator')">엘리베이터</button>
-    <button onclick="goTo('restaurant')">레스토랑</button><br>
+    <button onclick="goTo('elevator')">엘리베이터</button><br>
     <button class="nav-button" onclick="goTo('starting-point')">건물 입구로 돌아가기</button>
   </div>
 
       <!-- 로비:엘리베이터:탑승 --> 
     <div id="elevator" class="hidden">
-    <p><span style="font-weight: bold;">[엘리베이터]</span><br><br>원하는 층으로 이동할 수 있다.<br>하지만 4층 이상부터는 정비 중인지, 버튼을 눌러도 불이 들어오지 않는다.</p>
+    <p><span style="font-weight: bold;">[엘리베이터]</span><br><br>원하는 층으로 이동할 수 있다.<br>4층이 마지막 층이다.</p>
+    <button onclick="goToWithSound('4thfloor','zzapelevator.mp3')">4층</button><br>
       <button onclick="goToWithSound('3rdfloor','zzapelevator.mp3')">3층</button><br>
     <button onclick="goToWithSound('2ndfloor','zzapelevator.mp3')">2층</button><br>
       <button onclick="goToWithSound('inside','zzapelevator.mp3')">1층</button><br>
@@ -340,7 +340,7 @@
 
     <!-- 로비:카운터 --> 
     <div id="counter" class="hidden">
-    <p><span style="font-weight: bold;">[로비]<br>[카운터]</span><br><br>보통이라면 직원이 서 있어야 할 카운터 너머에는 아무도 없다. 가까이 다가가자 공증인의 목소리가 울린다.<br><br><em>"좋은 하루 보내고 계신가요?"</em><br><br><em>"이번에도 작은 퀴즈를 준비했습니다. 유언 집행을 위한 기력 충전에 도움이 되었으면 좋겠군요."</em></p>
+    <p><span style="font-weight: bold;">[로비]<br>[카운터]</span><br><br>보통이라면 직원이 서 있어야 할 카운터 너머에는 아무도 없다. 가까이 다가가자 공증인의 목소리가 울린다.<br><br><em>"유언집행자 님, 안녕하신가요."</em><br><br><em>"새로운 퀴즈를 준비했습니다. 새로운 장소를 꼼꼼히 둘러보고 오시면 도움이 될 겁니다."</em></p>
     <button onclick="goTo('notary')">공증인과 대화하기</button><br>
     <button class="nav-button" onclick="goTo('lobby')">나가기</button>
  </div>
@@ -348,21 +348,21 @@
     <!-- 로비:카운터:notary --> 
     <div id="notary" class="hidden">
     <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br>스피커를 통해 흘러나오는 목소리는 정중하지만, 마냥 신뢰할 수는 없다...<br><em>"어떤 일을 도와드릴까요?"</em></p>
-    <button id="nota1" onclick="goTodel('notary1', 'nota1')">로렘의 유언에 대해서</button><br>
-    <button id="nota2" onclick="goTodel('notary2', 'nota2')">기록체에 대해서</button><br>
+    <button id="nota1" onclick="goTodel('notary1', 'nota1')">유언 집행의 보상에 대해서</button><br>
+    <button id="nota2" onclick="goTodel('notary2', 'nota2')">새로운 시설에 대하여</button><br>
     <button onclick="goTo('notary4')">퀴즈를 푼다</button><br>
     <button class="nav-button" onclick="goTo('counter')">대화를 끝낸다</button>
  </div>
   
     <!-- 로비:카운터:notary1 --> 
     <div id="notary1" class="hidden">
-    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"로렘 님께서 작성하신 유언을 한 치의 오차 없이 낭독해 드렸습니다.<br>믿기 어려워하시는 유언집행자 분들이 많으신 듯해 유감입니다만...<br>그렇다고 유언을 집행하지 않을 수도 없는 노릇이지요."</em></p>
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"아무런 보상도 없이 살해를 강요할 수는 없는 노릇이겠지요.<br>여러분의 마음을 움직이는 보상을 찾기 위해 매번 최선을 다하고 있습니다.<br>기대해 주세요."</em></p>
     <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
  </div>
   
     <!-- 로비:카운터:notary2 --> 
     <div id="notary2" class="hidden">
-    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"기록체는 고인의 기억이나 성격을 기반으로 새로운 아웃풋을 도출하기도 합니다.<br>실로 놀라운 기술이지요. 여러분께 선보일 수 있어 영광입니다."</em></p>
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"처음부터 모든 시설을 개방하면 놀라실까 싶어, 조금씩 보여드리고 있습니다.<br>그렇다고는 해도 여러분을 위해 준비된 공간은 4층이 마지막이군요.<br>마음에 드셨는지요?"</em></p>
     <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
  </div>
 
@@ -383,12 +383,6 @@
     <button class="nav-button" onclick="goTo('notary')">다른 이야기</button>
  </div>
   
-    <!-- 레스토랑 --> 
-    <div id="restaurant" class="hidden">
-    <p><span style="font-weight: bold;">[레스토랑]</span><br><br>이곳에 모인 초세계급들의 식사를 책임지는 레스토랑. 식사를 하며 바깥 풍경을 바라볼 수 있도록 유리창이 나 있다.
-    <br>전에 보았던 것과 크게 달라진 점은 없지만, <span style="color: #3f40d3;">"음료 디스펜서는 3층의 영화관으로 이전했습니다"</span> 라는 안내문이 붙어 있다.</p>
-      <button class="nav-button" onclick="goTo('inside')">나가기</button>
-  </div>
 
   <!-- 영화관 : 음료 디스펜서 --> 
   <div id="dispenser" class="hidden">
@@ -415,7 +409,7 @@
     <!-- 영화관 : 음료 디스펜서 2 (음료 공모전) -->
   <div id="dispenser2" class="hidden">
   <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
-  "다음 주의 랜덤 음료 공모전 테마는... ＜좋아하는 사람의 마음을 사로잡기 위한 음료＞! <br>유언집행자 여러분의 많은 참여 바랍니다!"<br><br>...라고 쓰여 있다. 한 사람당 2개까지 응모 가능한 모양이다.</p>
+  "다음 주의 랜덤 음료 공모전 테마는... ＜싫어하는 사람에게 권하고 싶은 음료＞! <br>유언집행자 여러분의 많은 참여 바랍니다!"<br><br>...라고 쓰여 있다. 한 사람당 2개까지 응모 가능한 모양이다.</p>
    <input type="text" id="gongmo">
   <div id="gongmobox" style="display: block; margin-top: 1em;">
   <button onclick="addgongmo()">확인</button>
@@ -497,7 +491,6 @@
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
-  
     <!-- 책장 --> 
     <div id="bookshelf2" class="hidden">
     <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>문학 서가의 추천도서는...<br>'괴물이 잠든 눈' 이라는 소설이다.<br>작가의 이름은 리반 에케로스.</p>
@@ -510,14 +503,12 @@
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
-  
     <!-- 책장 --> 
     <div id="bookshelf5" class="hidden">
     <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>자연과학 서가의 추천도서는...<br>밤하늘의 다양한 별들을 찾는 방법을 알기 쉽게 설명한 책이다.<br>작은곰자리에 속한 북극성을 설명한 페이지에 책갈피가 꽂혀 있다.</p>
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
-  
     <!-- 책장 --> 
     <div id="bookshelf6" class="hidden">
     <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>사회과학 서가의 추천도서는...<br>대도시에서 발생하는 소매치기 문제에 대해 다룬 책.<br>소매치기가 가장 많은 도시로 꼽힌 곳은 바르셀로나. 프랑스 파리는 5위에 올라 있다.</p>
