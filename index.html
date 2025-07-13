@@ -444,441 +444,91 @@
 
     <!-- 음악실 --> 
     <div id="music" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]</span><br><br>다양한 악기와 음반을 모아 둔 음악실.<br>방음 시설이 완비된 <span style="color: #3f40d3;">녹음실</span>와 <span style="color: #3f40d3;">CD 감상 부스</span>가 설치되어 있다.<br>또, <span style="color: #3f40d3;">악기 보관실</span>이라고 쓰인 작은 문이 구석에 배치된 것이 보인다.</p>
-    <button onclick="goTo('recording')">녹음실</button>
-    <button onclick="goTo('cd')">CD 감상 부스</button>
-    <button onclick="goTo('inst')">악기 보관실</button><br>
+    <p><span style="font-weight: bold;">[음악실]</span><br><br>다양한 악기와 음반을 모아 둔 음악실. 전과 달라진 점은 없는 것 같다. 쓰러져 있었던 딥 블루의 CD가 다시 말끔히 세워져 있다.</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
   </div>
 
-    <!-- 녹음 부스 --> 
-    <div id="recording" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>이곳에서라면 누구나 스타가 될 수 있다!<br>노래 실력을 뽐낼 수 있는 마이크와 헤드셋이 구비된 녹음 부스.</p>
-    <button id="lulu" onclick="goTodel('recording1', 'lulu')">노래한다</button><br>
-    <button class="nav-button" onclick="goTo('music')">나가기</button>
-  </div>
-
-    <!-- 녹음 부스 --> 
-    <div id="recording1" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 곡에 맞춰서 노래를 부를까?</p>
-    <button onclick="goTo('recording2')">잔잔한 발라드</button><br>
-    <button onclick="goTo('recording3')">신나는 댄스곡</button><br>
-  </div>
-
-    <!-- 녹음 부스 --> 
-    <div id="recording2" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 마음가짐으로 노래를 부를까?</p>
-    <button onclick="goTo('recording4')">나만의 그루브를 담아서</button><br>
-    <button onclick="goTo('recording5')">음 하나하나에 심혈을 기울여서</button><br>
-  </div>
-
-    <!-- 녹음 부스 --> 
-    <div id="recording3" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>어떤 마음가짐으로 노래를 부를까?</p>
-    <button onclick="goTo('recording4')">나만의 그루브를 담아서</button><br>
-    <button onclick="goTo('recording5')">음 하나하나에 심혈을 기울여서</button><br>
-  </div>
-
-    <!-- 녹음 부스 --> 
-    <div id="recording4" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>그루비하게 열창했다! 점수는...<span id="recording-score-4"></span><br>열심히 노래하고 나니 허공에서 1코인이 떨어졌다. 공연의 답례인가...?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
-    <button class="nav-button" onclick="goTo('music')">나가기</button>
-  </div>
-
-    <!-- 녹음 부스 --> 
-    <div id="recording5" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[녹음실]</span><br><br>섬세하게 열창했다! 점수는...<span id="recording-score-5"></span><br>열심히 노래하고 나니 허공에서 1코인이 떨어졌다. 공연의 답례인가...?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
-    <button class="nav-button" onclick="goTo('music')">나가기</button>
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cd" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>좋아하는 노래를 감상할 수 있는 부스.<br>꽤 고급인 듯한 <span style="color: #3f40d3;">CD 플레이어</span>가 눈에 띈다. 헤드셋도 부착되어 있다.<br>벽 한켠에는 CD를 모아 놓은 <span style="color: #3f40d3;">장식장</span>이 보인다.</p>
-    <button onclick="goTo('cdplayer')">CD 플레이어</button>
-    <button onclick="goTo('cdlist')">장식장</button><br>
-    <button class="nav-button" onclick="goTo('music')">나가기</button>
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cdplayer" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>원하는 CD를 플레이어에 넣고 감상할 수 있는 공간이다. 어떤 음악을 들어 볼까?</p>
-    <button id="cdbtn" onclick="listencd('cdbtn')">CD를 재생한다</button><br>
-    <button class="nav-button" onclick="goTo('cd')">나가기</button>
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cd1" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>CD를 넣고 음악을 들었다.<br>역시 초세계급의 음악이라서일까, 듣는 것만으로도 다양한 감정이 느껴진다...<br>요 며칠 많은 일이 있었지만, 조금은 진정할 수 있을 것 같다.</p>
-    <button class="nav-button" onclick="goTo('cd')">나가기</button>
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cdlist" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>셀 수 없는 만큼 많은 CD의 향연이 펼쳐진다... 클래식, 팝송, 재즈, 전통음악까지.<br>가장 눈에 띄는 CD가 몇 개 있다. 골라 볼까?</p>
-    <button id="pickcd" onclick="goTodel('cdlist1', 'pickcd')">CD 고르기</button><br>
-    <button class="nav-button" onclick="goTo('cd')">나가기</button>
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cdlist1" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>딱 눈에 들어오는 것은 아래 두 개의 CD다. 마음에 드는 쪽을 골라 보자.</p>
-    <button onclick="goTo('cdlist2')">밴드 딥 블루의 '바다 위에서'</button>
-    <button onclick="goTo('cdlist2')">세토 아이비가 참여한 콰르텟 연주 모음집</button>   
-  </div>
-
-    <!-- CD부스 --> 
-    <div id="cdlist2" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[CD 감상 부스]</span><br><br>CD를 골랐다. 이제 재생할 일만 남았다.</p>
-    <button class="nav-button" onclick="goTo('cd')">나가기</button>
-  </div>
-
-    <!-- 악기 보관실 --> 
-    <div id="inst" class="hidden">
-    <p><span style="font-weight: bold;">[음악실]/[악기 보관실]</span><br><br>다양한 악기가 보관된 곳.<br>악기의 보관에 최적화된 습도와 온도를 유지하고 있다.<br>이곳에 체류하는 초세계급이라면 어떤 악기든 자유롭게 빌릴 수 있는 모양이다.</p>
-    <button class="nav-button" onclick="goTo('music')">나가기</button>
-  </div>
-
-
-
-      
     <!-- 영화관 --> 
     <div id="cinema" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]</span><br><br>소규모지만, 제법 영화관 분위기가 나는 <span style="color: #3f40d3;">스크린</span>과 관람용 <span style="color: #3f40d3;">좌석</span>이 설치된 공간이다.<br>한쪽에는 <span style="color: #3f40d3;">팝콘 기계</span>까지 설치되어 있고, 그 옆에는 예전에 레스토랑에 있었던 <span style="color: #3f40d3;">음료 디스펜서 v2.0</span>도 옮겨 와 있다. v2.0...?</p>
-    <button onclick="goTo('screen')">스크린</button>
-    <button onclick="goTo('seat')">좌석</button>    
-    <button onclick="goTo('pop')">팝콘 기계</button>    
-    <button onclick="goTo('dispenser')">음료 디스펜서 v2.0</button><br>      
+    <p><span style="font-weight: bold;">[영화관]</span><br><br>소규모지만, 제법 영화관 분위기가 나는 장소. 전과 크게 달라진 점은 없지만,<br><span style="color: #3f40d3;">"음료 디스펜서는 4층의 카페로 이전했습니다"</span> 라는 안내문이 붙어 있다.</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
     </div>   
-
-    <!-- 스크린 --> 
-    <div id="screen" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[스크린]</span><br><br>진짜 영화관의 스크린 규모는 아니지만, 그래도 기분을 내기에는 좋을 법한 대형 스크린이다.<br>가끔 현실을 잊고 싶을 때는 여기에 와서 영화를 시청하는 것도 좋은 선택일 것 같다...</p>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-
-
-    <!-- 좌석 --> 
-    <div id="seat" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>리클라이닝 시스템이 완비된 최신식 좌석이다.<br>앉아 보면 무척 편하다. 낮잠을 자기에도 딱일 정도.<br>그런데 영화관 가장 구석을 보면 수상한 좌석이 하나 놓여 있다...<br><br>《강한 자만 앉을 수 있는 좌석》...?</p>
-    <button onclick="goTo('seat1')">강한 자만 앉을 수 있는 좌석</button><br>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-    <!-- 좌석1 --> 
-    <div id="seat1" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>좌석을 확인하면, 공연장이나 영화관에서 흔히 볼 수 있는 접이식 의자지만...<br>어째서인지 등받이와 좌석이 굉장히 강한 힘으로 고정되어 있다.<br>여기 앉으려면 온 힘을 다해 접이식 의자를 펴야 할 것 같다...<br>앉으려고 시도해 볼까?</p>
-    <button id="stbtn" onclick="strongseat('stbtn')">앉으려고 시도한다</button><br>
-    <button class="nav-button" onclick="goTo('seat')">나가기</button>
-  </div>
-
-
-    <!-- 좌석2 --> 
-    <div id="seat2" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>하지만 의자는 조금도 움직이지 않는다!<br>억지로 펴려고 하다가 뒤로 나동그라지고 말았다. 아야야...<br>아무도 안 봤겠지...?</p>
-    <button class="nav-button" onclick="goTo('seat')">나가기</button>
-  </div>
-
-    <!-- 좌석3 --> 
-    <div id="seat3" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>하지만 의자는 조금도 움직이지 않는다!<br>아직 '강한 자'가 되기에는 힘이 부족하다...<br>더 강해진 다음에 시도하도록 하자.</p>
-    <button class="nav-button" onclick="goTo('seat')">나가기</button>
-  </div>
-
-    <!-- 좌석4 --> 
-    <div id="seat4" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[좌석]</span><br><br>접이식 의자를 펴려고 시도했다.<br>힘에는 자신이 있지만, 이 의자, 굉장한 호적수다...!<br>하지만 사투 끝에 겨우 의자를 펴고 위에 앉을 수 있었다.<br>강한 자는 어떤 의자 위에도 앉을 수 있는 법이다...<br>의자를 펴고 나니, 좌석 사이에 무언가 걸려 있었는지 땅으로 떨어지는 소리가 났다.<br>이건... 코인이다!<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-  <!-- 팝콘 --> 
-    <div id="pop" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>영화를 볼 때는 역시 팝콘이 빠질 수 없지! 마음껏 팝콘을 뽑을 수 있는 기계다.<br>'30여 가지 맛이 준비되어 있습니다' 라고 적혀 있다.<br>그런데... 버튼은 한 개뿐이다.</p>
-    <button id="ppbtn" onclick="getpopcorn('ppbtn')">팝콘을 뽑는다</button><br>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-    <!-- 팝콘 --> 
-    <div id="pop1" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '고수녹즙파프리카맛'이라고 쓰여 있다.<br>이게... 대체 무슨 맛이지?</p>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-    <!-- 팝콘 --> 
-    <div id="pop2" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '솔트 카라멜 맛'이라고 쓰여 있다.<br>고소하고 달콤 짭짤한 향기가 풍긴다... 운이 좋았다!</p>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
-
-    <!-- 팝콘 --> 
-    <div id="pop3" class="hidden">
-    <p><span style="font-weight: bold;">[영화관]/[팝콘 기계]</span><br><br>팝콘을 뽑았다.<br>팝콘 기계의 화면에 '소금 맛'이라고 쓰여 있다.<br>평범하지만 이 정도면 나쁘지 않은가?</p>
-    <button class="nav-button" onclick="goTo('cinema')">나가기</button>
-  </div>
   
     <!-- 미술실 --> 
     <div id="art" class="hidden">
-    <p><span style="font-weight: bold;">[미술실]</span><br><br>예술적 소양을 함양할 수 있는 공간. 이곳저곳 이젤과 화구가 놓여 있다.<br>크게 <span style="color: #3f40d3;">작업실</span>과 <span style="color: #3f40d3;">전시실</span>로 나누어져 있는 듯하다.</p>
-    <button onclick="goTo('atlier')">작업실</button>
-    <button onclick="goTo('museum')">전시실</button><br>  
+    <p><span style="font-weight: bold;">[미술실]</span><br><br>예술적 소양을 함양할 수 있는 공간. 이곳저곳 이젤과 화구가 놓여 있다.<br>그동안 초세계급들이 그린 그림들이 초세계급 화가의 그림 옆에 나란히 전시되어 있다.</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
     </div>   
   
-<!-- 작업실 --> 
-<div id="atlier" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[작업실]</span><br><br>각종 화구와 질 좋은 종이가 준비된 작업실.<br>그림을 그리는 것은 물론이고, 조소나 도예까지 할 수 있도록 다양한 장비가 배치되어 있다.<br>평소 예술과 연이 없었던 사람이더라도 이곳에서는 새 취미를 찾을 수 있을지도...</p>
-<button id="gry" onclick="goTodel('atlier1', 'gry')">그림을 그린다</button><br>
-  <button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
-  <!-- 작업실1 --> 
-<div id="atlier1" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[작업실]</span><br><br>예술혼을 불태우기 위한 작업을 시작했다.<br><br>허공에서 목소리가 들린다...<br><em>"멋진 작품이군요. 전시실에 특별 전시 공간을 만들어 전시해보도록 하겠습니다."</em><br><br>초세계급 화가의 그림 옆에 이 그림이...?</p>
-  <button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
-<!-- 전시실 --> 
-<div id="museum" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>다양한 유명 작품들을 모아서 전시해 둔 곳이다.<br>레플리카가 많지만 진품도 섞여 있다.<br>초세계급 화가, 에이즈카 아키라의 <천사> 연작도 몇 점 볼 수 있는데... 이건 진품인가?</p>
-<button id="jns" onclick="goTodel('museum1', 'jns')">전시실 내부를 둘러본다</button><br>
-<button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
-<!-- 전시실 --> 
-<div id="museum1" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>전시실 내부를 쭉 둘러보기로 했다. 어떻게 둘러볼까?</p>
-<button onclick="goTo('museum2')">모든 작품 설명을 꼼꼼히 읽는다</button><br>
-<button onclick="goTo('museum3')">나름대로 작품에 해석을 더해 본다</button><br>
-<button onclick="goTo('museum4')">작품을 손으로 만져 본다</button><br>
-</div>
-
-<!-- 전시실 --> 
-<div id="museum2" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>모든 작품을 열심히 관찰하며 둘러보았다.<br>시간은 굉장히 오래 걸렸지만... 머릿속에 지식이 가득해진 것 같다!</p>
-<button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
-<!-- 전시실 --> 
-<div id="museum3" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br>어려운 이야기는 일단 제쳐두고 나름대로 해석을 더하며 둘러보았다.<br>상상력이 관람을 한층 더 즐겁게 해 준다! 좋은 경험이었다.</p>
-<button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
-<!-- 전시실 --> 
-<div id="museum4" class="hidden">
-<p><span style="font-weight: bold;">[미술실]/[전시실]</span><br><br><em>"유언집행자 님, 전시실의 물건에 함부로 손을 대시면 안 됩니다."</em><br>공증인의 엄숙한 목소리가 들려왔다...<br>혼이 나고 말았다.</p>
-<button class="nav-button" onclick="goTo('art')">나가기</button>
-</div>
-
     <!-- 공연장 --> 
     <div id="stage" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]</span><br><br>원형 극장의 형태를 빌려온 공연장.<br>중앙의 <span style="color: #3f40d3;">무대</span>와 <span style="color: #3f40d3;">조명 관리실</span>, <span style="color: #3f40d3;">분장실</span>까지 제법 그럴싸하다.<br>구석에 <span style="color: #3f40d3;">'인생한컷'</span>이라고 쓰인 부스가 있다.</p>
-    <button onclick="goTo('mudae')">무대</button>
-    <button onclick="goTo('light')">조명 관리실</button>
-    <button onclick="goTo('makeup')">분장실</button>
-    <button onclick="goTo('onecut')">인생한컷</button><br>
+    <p><span style="font-weight: bold;">[공연장]</span><br><br>원형 극장의 형태를 빌려온 공연장.<br>지금도 공연장 사용은 문제 없이 가능하지만, 보고 있으면 사건 현장이 떠오른다...</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
-  </div>
-
-    <!-- 공연장 인생한컷 --> 
-    <div id="onecut" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>즉석 사진을 인화할 수 있는 부스인 모양이다.<br>그런데... 인생 한 컷이라니 너무 짧지 않아?</p>
-    <button id="isnc" onclick="goTodel('onecut1', 'isnc')">사진을 찍는다</button><br>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-      <!-- 공연장 인생한컷 --> 
-    <div id="onecut1" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>제대로 준비할 틈도 없이 사진 촬영이 시작된다!<br>잠깐... 포즈는?</p>
-    <button onclick="goTo('onecut2')">자신있게!</button><br>
-    <button onclick="goTo('onecut3')">사랑스럽게!</button><br>
-    <button onclick="goTo('onecut4')">무난하게!</button><br>
-  </div>
-
-        <!-- 공연장 인생한컷 --> 
-    <div id="onecut2" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>당당하고 멋진 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
-    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
-  </div>
-
-          <!-- 공연장 인생한컷 --> 
-    <div id="onecut3" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>사랑스럽고 귀여운 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
-    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
-  </div>
-
-          <!-- 공연장 인생한컷 --> 
-    <div id="onecut4" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[인생한컷]</span><br><br>무난하고 밋밋한 포즈가...<br>국화 꽃다발과 영정 사진 프레임 안에 찍혀 나왔다.<br>뭐 이런 사진 부스가 다 있어?!</p>
-    <button class="nav-button" onclick="goTo('onecut')">나가기</button>
-  </div>
-  
-    <!-- 공연장 --> 
-    <div id="mudae" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>무대 위에 서자 다닥다닥 붙은 관객석이 눈에 들어온다.<br>지금은 아무도 앉아 있지 않지만, 이렇게 관객석에 둘러싸이는 것만으로도 조금 긴장이 될지도...<br>무대에 서고 나니, 중앙에 붙어 있는 <span style="color: #3f40d3;">작은 종이</span>가 보인다. 안내문인가?</p>
-    <button id="ahffk" onclick="dodo('ahffk')">공연한다</button><br>
-    <button onclick="goTo('paper')">작은 종이</button><br>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-    <!-- 작은 종이 --> 
-    <div id="paper" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>"분장실의 미션 상자를 이용해 만반의 준비를 마친 뒤, 무대에서 끼를 펼칠 것."</p>
-    <button class="nav-button" onclick="goTo('mudae')">나가기</button>
-  </div>
-
-
-    <!-- 공연장 --> 
-    <div id="mudae1" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>만반의 준비를 갖췄다...! 이제 남은 것은...</p>
-    <button id="stgbtn" onclick="onstage('stgbtn')">끼를 발산한다!!</button><br>
-  </div>
-
-   <!-- 공연장 --> 
-    <div id="onstage1" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>머리띠를 쓰고 무대에 선 것까지는 좋았지만...<br>너무 부끄러워! 이런 모습으로 끼를 발산할 수 있을 리 없다!<br>무대에서 내려오고 말았다...</p>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-   <!-- 공연장 --> 
-    <div id="onstage2" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>귀여운 머리띠를 쓰고 무대에 섰다.<br>아무도 없는 공연장에서 깜찍한 모습으로 끼를 발산하기...<br>강한 정신력으로 이겨낸다!!<br><br>최고의 무대를 선보였다.<br>스피커에서 박수 소리가 들려오더니... 2코인이 공중에서 떨어졌다!<br><span style="font-weight: bold;">2코인을 획득했다.</span></p>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-   <!-- 공연장 --> 
-    <div id="onstage3" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[무대]</span><br><br>용기를 내어 무대에 올랐다.<br>하지만 이런 깜찍한 머리띠로 끼를 발산하라니... 평범하게 어렵잖아?<br>그래도 어떻게든 정신력을 짜내서 무대를 끝마쳤다.<br><br>스피커에서 박수 소리가 들려오더니... 1코인이 공중에서 떨어졌다!<br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-   <!-- 분장실 --> 
-    <div id="makeup" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>다양한 소품이 준비된 분장실.<br>무대 위에 올라가기 전에는 스타를 더 스타답게 만들어 주는 분장이 필수다.<br>의상이나 악세사리도 준비되어 있고, 메이크업을 위한 소품과 화장품도 늘어서 있다.<br>화장대 아래쪽에 작은 상자가 놓여 있는데...<br><span style="color: #3f40d3;">미션 상자</span>, 라고 쓰여 있다.</p>
-    <button onclick="goTo('makeup1')">미션 상자</button><br>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-   <!-- 분장실1 --> 
-    <div id="makeup1" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>상자를 열자 동물 머리띠가 들어 있다.<br>이걸 사용해서 미션을 수행하는 건가...?<br>우선 동물 머리띠를 골라야 할 것 같다...</p>
-    <button id="tkdwk" onclick="goTodel('makeup2', 'tkdwk')">머리띠 고르기</button><br>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
-  </div>
-
-   <!-- 분장실2 --> 
-    <div id="makeup2" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>어떤 머리띠를 고를까?</p>
-    <button onclick="goTo('makeup3')">토끼 머리띠</button>
-    <button onclick="goTo('makeup4')">고양이 머리띠</button>
-    <button onclick="goTo('makeup5')">다람쥐 머리띠</button>
-  </div>
-
-   <!-- 분장실3 --> 
-    <div id="makeup3" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>깜찍한 토끼 머리띠를 손에 넣었다.</p>
-    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
-  </div>
-   <!-- 분장실4 --> 
-    <div id="makeup4" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>귀여운 고양이 머리띠를 손에 넣었다.</p>
-    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
-  </div>
-   <!-- 분장실5 --> 
-    <div id="makeup5" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>러블리한 다람쥐 머리띠를 손에 넣었다.</p>
-    <button class="nav-button" onclick="goTo('makeup')">나가기</button>
-  </div>
-
-   <!-- 조명 --> 
-    <div id="light" class="hidden">
-    <p><span style="font-weight: bold;">[공연장]/[분장실]</span><br><br>조명을 설정할 수 있는 방이다.<br>이 조명으로 나만이 빛나도록 하면... 시선을 한 번에 사로잡을 수 있다!</p>
-    <button class="nav-button" onclick="goTo('stage')">나가기</button>
   </div>
   
     <!-- 도서관 --> 
     <div id="library" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]</span><br><br>장서의 종류별로 정리된 책장이 숲처럼 펼쳐진다.<br>지식의 보고라고 불리기에 손색없을 정도의 대형 도서관.<br><span style="color: #3f40d3;">열람실</span> 안에 들어가거나 <span style="color: #3f40d3;">책장</span>에서 책을 고를 수 있을 것 같다.</p>
-    <button onclick="goTo('readroom')">열람실</button>
+    <p><span style="font-weight: bold;">[도서관]</span><br><br>장서의 종류별로 정리된 책장이 숲처럼 펼쳐진다.<br>지식의 보고라고 불리기에 손색없을 정도의 대형 도서관.<span style="color: #3f40d3;">책장</span>에서 책을 고를 수 있을 것 같다.<br>각 서가의 추천도서를 새로 구비했다는 안내문이 붙어 있다.</p>
     <button onclick="goTo('bookshelf')">책장</button><br>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
-    </div>   
-
-    <!-- 열람실 --> 
-    <div id="readroom" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]/[열람실]</span><br><br>앉아 있기 좋은 안락의자와 독서대 등을 갖춘 열람실.<br>여기라면 바깥의 방해를 받지 않고 얼마든지 독서에 빠져 있을 수 있다.<br>그런데 열람실 벽에 붙어 있는 <span style="color: #3f40d3;">포스터</span>가 신경쓰인다. 이건 뭐지?</p>
-    <button onclick="goTo('poster')">포스터</button><br>
-    <button class="nav-button" onclick="goTo('library')">나가기</button>
-    </div>   
-
-    <!-- 열람실 --> 
-    <div id="poster" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]/[열람실]</span><br><br>《미래기관 내 대출 인기 도서 순위》<br><br>1위. 『초세계급이 재능을 숨김』<br>2위. 『환생했더니 기록체가 되었습니다만?!』<br>3위. 『나 혼자 1지부 1짱』<br><br>이 책들이 정말 대출 순위권 안이라고...?</p>
-    <button class="nav-button" onclick="goTo('library')">나가기</button>
     </div>   
 
     <!-- 책장 --> 
     <div id="bookshelf" class="hidden">
     <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>다양한 언어의 책이 꽂혀 있는 책장.<br>쉽게 읽을 수 있는 책들도 있고, 전공자가 아니면 이해할 수 없는 수준의 전문서적도 있다.<br>평생 책만 읽어도 다 읽어치울 수 없을 것 같은 양이다.<br>서가별로 추천도서도 모아 둔 모양인데, 한번 책을 골라 볼까?</p>
-    <button onclick="goTo('bookshelf1')">문학 서가의 추천도서</button><br>
-    <button onclick="goTo('bookshelf2')">자연과학 서가의 추천도서</button><br>
-    <button onclick="goTo('bookshelf3')">사회과학 서가의 추천도서</button><br>
+    <button onclick="goTo('bookshelf1')">종교 서가의 추천도서</button>
+    <button onclick="goTo('bookshelf4')">문학 서가의 추천도서</button>
+    <button onclick="goTo('bookshelf2')">아동문학 서가의 추천도서</button><br>
+    <button onclick="goTo('bookshelf3')">철학 서가의 추천도서</button>
+    <button onclick="goTo('bookshelf5')">자연과학 서가의 추천도서</button>
+    <button onclick="goTo('bookshelf6')">사회과학 서가의 추천도서</button><br>
     <button class="nav-button" onclick="goTo('library')">나가기</button>
     </div>   
 
     <!-- 책장 --> 
     <div id="bookshelf1" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>문학 서가의 추천도서는...<br>붉은 머리의 체스마스터가 각 분야의 천재들을 한 명씩 쓰러뜨리는 내용의 소설이다.<br>세상의 모든 분야를 섭렵하고 만 체스마스터는 왕좌에 올라앉아 도전자를 기다리고 있다고 한다.<br>모든 내용은 허구이며 실제 인물을 바탕으로 하고 있지 않다고 적혀 있다.</p>
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>종교 서가의 추천도서는...<br>한국의 민간 신앙인 무속신앙에 대해 정리해 둔 책이다.<br>귀신을 쫓는 방법 중에는 구타를 가하는 '구타법' 이라는 것도 있다고 한다.</p>
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
+      <!-- 책장 --> 
+    <div id="bookshelf4" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>문학 서가의 추천도서는...<br>'기억이란 무엇인가?' 라는 제목의 책.<br>한 번 잊어버린 기억을 떠올리는 것에 대한 다양한 관점을 소개하고 있다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+
+  
     <!-- 책장 --> 
     <div id="bookshelf2" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>자연과학 서가의 추천도서는...<br>화산학자들에 대한 이야기이다.<br>화산학자들은 성격이 화산 같다는 이야기가 있다고 쓰여 있다.</p>
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>문학 서가의 추천도서는...<br>'괴물이 잠든 눈' 이라는 소설이다.<br>작가의 이름은 리반 에케로스.</p>
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
     <!-- 책장 --> 
     <div id="bookshelf3" class="hidden">
-    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>사회과학 서가의 추천도서는...<br>'친구 100명 사귀는 100가지 방법'이라는 띠지를 두른 자기계발서이다.<br>100명의 친구를 사귀려면 한 사람 한 사람에 맞는 100가지 방법이 필요하다는 무난한 내용의 책이다.</p>
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>철학 서가의 추천도서는...<br>'기억이란 무엇인가?' 라는 제목의 책.<br>한 번 잊어버린 기억을 떠올리는 것에 대한 다양한 관점을 소개하고 있다.</p>
     <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
     </div>   
 
+  
+    <!-- 책장 --> 
+    <div id="bookshelf5" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>자연과학 서가의 추천도서는...<br>밤하늘의 다양한 별들을 찾는 방법을 알기 쉽게 설명한 책이다.<br>작은곰자리에 속한 북극성을 설명한 페이지에 책갈피가 꽂혀 있다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+
+  
+    <!-- 책장 --> 
+    <div id="bookshelf6" class="hidden">
+    <p><span style="font-weight: bold;">[도서관]/[책장]</span><br><br>사회과학 서가의 추천도서는...<br>대도시에서 발생하는 소매치기 문제에 대해 다룬 책.<br>소매치기가 가장 많은 도시로 꼽힌 곳은 바르셀로나. 프랑스 파리는 5위에 올라 있다.</p>
+    <button class="nav-button" onclick="goTo('bookshelf')">나가기</button>
+    </div>   
+  
     <!-- 자유연구실 --> 
     <div id="lab" class="hidden">
-    <p><span style="font-weight: bold;">[자유연구실]</span><br><br>학자와 연구자들을 위한 자유연구실.<br>딱 봐도 어려워 보이는 장치들과 함께 <span style="color: #3f40d3;">고성능 컴퓨터</span>와 <span style="color: #3f40d3;">약품 보관실</span>이 보인다. 함부로 건드리면 안 될 것 같다...</p>
-    <button onclick="goTo('supercomputer')">고성능 컴퓨터</button>
-    <button onclick="goTo('medicine')">약품 보관실</button><br>
+    <p><span style="font-weight: bold;">[자유연구실]</span><br><br>학자와 연구자들을 위한 자유연구실.<br>전과 크게 달라진 점은 없다.</p>
     <button class="nav-button" onclick="goTo('3rdfloor')">나가기</button>
     </div>   
-
-    <!-- 슈퍼컴 --> 
-    <div id="supercomputer" class="hidden">
-    <p><span style="font-weight: bold;">[자유연구실]/[고성능 컴퓨터]</span><br><br>크기부터가 굉장히 큰 고성능 컴퓨터.<br>평범한 사람이라면 어떻게 다루는지조차 알 수 없을 것이다.<br>이 대단한 컴퓨터도 인터넷에는 연결되어 있지 않은 모양이다...</p>
-    <button class="nav-button" onclick="goTo('lab')">나가기</button>
-    </div>   
-
-   <!-- 약품보관실 --> 
-    <div id="medicine" class="hidden">
-    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>어려운 이름의 약품들이 잔뜩 늘어서 있는 약품 보관실이다.<br>잘못 만졌다가는 부상을 입을 수도 있으니 각별히 주의할 것.<br>연구실 구석에 <span style="color: #3f40d3;">쓰레기통</span>이 놓여 있다.</p>
-    <button onclick="goTo('trash')">쓰레기통을 연다</button><br>
-    <button class="nav-button" onclick="goTo('lab')">나가기</button>
-    </div>   
-
-   <!-- 쓰레기통 --> 
-    <div id="trash" class="hidden">
-    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>쓰레기통에는 화학 폐기물을 어떻게 처리해야 하는지에 대한 복잡한 설명이 적혀 있다.<br>아직 여기 무언가를 버린 사람은 없는 것 같지만...</p>
-    <button id="tartar" onclick="goTodel('trashcan', 'tartar')">쓰레기통을 뒤진다</button><br>
-    <button class="nav-button" onclick="goTo('medicine')">나가기</button>
-    </div>   
-
-   <!-- 쓰레기통 --> 
-    <div id="trashcan" class="hidden">
-    <p><span style="font-weight: bold;">[자유연구실]/[약품 보관실]</span><br><br>쓰레기통 안에 손을 넣고 휘적휘적 저었다.<br>아무리 빈 쓰레기통이라지만, 빈말로라도 좋다고는 말할 수 없는 광경이다...<br>열심히 뒤지다 보니 손에 무언가가 집힌다. 이건... 코인?<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
-<button class="nav-button" onclick="goTo('trash')">나가기</button>
-    </div>   
-
     
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
@@ -924,7 +574,7 @@
         coin: 0
       },
         liva3561: {
-        class: "??? ?",
+        class: "예언가 리반 에케로스",
         id: "Untitled",
         STR: 3,
         INT: 3,
@@ -1104,7 +754,7 @@
         key: 0,
         coin: 0},
               bury5792: {
-        class: "고고학자 베리",
+        class: "고고학자 스트로 베리",
         id: "Berry",
         STR: 5,
         INT: 5,
