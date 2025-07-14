@@ -664,7 +664,37 @@
 어디서든 자세를 점검할 수 있도록 대형 거울이 벽에 붙어 있다.<br>익숙한 스스로의 모습이 비친다.</p>
 <button class="nav-button" onclick="goTo('gigu')">나가기</button>
  </div> 
-  
+
+      <!-- 클라이밍장 --> 
+    <div id="climbing" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[클라이밍장]</span><br><br>
+색다른 운동을 통해 평소에 쓰지 않는 근육을 기를 수 있는 클라이밍장.<br>난이도에 따라 다양한 방식으로 그립이 배치되어 있다.<br>초보자용 코스도 있지만... 잠깐, 지금은 전부 닫혀 있잖아?<br><br>유일하게 이용 가능한 것은 <span style="color: #3f40d3;">불지옥 난이도 코스</span>뿐이다.</p>
+    <button onclick="goTo('climbing1')">불지옥 난이도 코스를 살펴본다</button><br>
+    <button class="nav-button" onclick="goTo('training')">나가기</button>
+    </div>   
+
+    <!-- 클라이밍장 --> 
+    <div id="climbing1" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[클라이밍장]</span><br><br>
+이런 걸 사람이 할 수 있을 리 없잖아! 라는 생각이 드는 수준으로 띄엄띄엄 배치된 그립이 보인다...<br>하지만 바라보고 있으면 왠지 승부욕이 끓어오른다.</p>
+    <button id="bzobtn" onclick="chall('bzobtn')">불지옥 난이도 코스에 도전한다!</button><br>
+    <button class="nav-button" onclick="goTo('climbing')">나가기</button>
+    </div>   
+
+    <!-- 클라이밍장 --> 
+    <div id="climbing2" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[클라이밍장]</span><br><br>
+해 보기도 전에 포기할 수는 없지! 야심차게 도전했다.<br>하지만 첫 그립을 잡는 순간 깨달았다...<br>여기서 조금도 더 나아갈 수 없다!<br><br>하지만 도전한 것만으로도 의미가 있었다. 격려를 보내듯 허공에서 코인 두 개가 떨어졌다.<br><br><span style="font-weight: bold;">2코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('training')">나가기</button>
+    </div>  
+ 
+    <!-- 클라이밍장 --> 
+    <div id="climbing3" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[클라이밍장]</span><br><br>
+이 정도에 가로막힐 수 없지! 어려운 코스를 자신 있게 돌파했다.<br>쉽지 않았지만 마침내 맨 꼭대기의 그립까지 제대로 터치했다.<br>멋진 승부였다! 허공에서 코인 두 개가 떨어졌다.<br><br><span style="font-weight: bold;">2코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('training')">나가기</button>
+    </div>   
+
  <!-- 수영장 --> 
 <div id="swimming" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]</span><br><br>액티비티와 함께 하며 고민을 씻어낼 수 있는 수영장. 수영장 특유의 소독약 냄새가 풍긴다.<br>색색의 레인이 설치된 25m짜리 <span style="color: #3f40d3;">메인 풀</span>, 물놀이 장비를 빌릴 수 있는 <span style="color: #3f40d3;">대여소</span>가 있다.<br>수영장 전체를 둘러싸는 형태로 긴 <span style="color: #3f40d3;">워터 슬라이드</span>가 설치되어 있어 눈길을 끈다.</p>
@@ -1363,7 +1393,7 @@ function goTo(page) {
     currentUser.coin = (currentUser.coin || 0) + 1;
     updateCoinDisplay();
   }
-  if (['onstage2','notary5'].includes(page)) {
+  if (['climbing2','climbing3','notary5'].includes(page)) {
     currentUser.coin = (currentUser.coin || 0) + 2;
     updateCoinDisplay();
   }
@@ -1549,7 +1579,16 @@ function bhzm(buttonId) {
     const btn = document.getElementById(buttonId);
     if (btn) btn.remove()  // 단 한 번만 제거
 }
-
+//★★★★클라이밍★★★★
+function chall(buttonId) {
+  if (currentUser.STR <= 4) {
+    goTo('climbing2');
+  } else {
+    goTo('climbing3');
+  }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
+}
 //★★★★★스탯메시지★★★★★
 function showStatMessage() {
 const stats = {
