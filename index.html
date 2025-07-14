@@ -655,7 +655,7 @@
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]</span><br><br>액티비티와 함께 하며 고민을 씻어낼 수 있는 수영장. 수영장 특유의 소독약 냄새가 풍긴다.<br>색색의 레인이 설치된 25m짜리 <span style="color: #3f40d3;">메인 풀</span>, 물놀이 장비를 빌릴 수 있는 <span style="color: #3f40d3;">대여소</span>가 있다.<br>수영장 전체를 둘러싸는 형태로 긴 <span style="color: #3f40d3;">워터 슬라이드</span>가 설치되어 있어 눈길을 끈다.</p>
 <button onclick="goTo('mainpool')">메인 풀</button>
 <button onclick="goTo('borrow')">대여소</button>
-<button onclick="goTo('slide')">워터 슬라이드</button>
+<button onclick="goTo('slide')">워터 슬라이드</button><br>
     <button class="nav-button" onclick="goTo('training')">나가기</button>
  </div> 
 
@@ -767,12 +767,47 @@
        <!-- 워터 슬라이드 --> 
 <div id="slide" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
-</p>
-    <button class="nav-button" onclick="goTo('swimming')">나가기</button>
+꽤 큰 규모의 워터 슬라이드. 깎아지른 듯한 경사를 지켜보는 것만으로도 스릴을 느낄 수 있을 것 같다.</p>
+<button id="faaam" onclick="goTodel('slide1', 'faaam')">워터 슬라이드를 탄다</button><br>
+<button class="nav-button" onclick="goTo('swimming')">나가기</button>
  </div> 
 
+<!-- 워터 슬라이드 --> 
+<div id="slide1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
+튜브를 탄 채로 워터 슬라이드에서 하강했다!<br>엄청난 속도감과 함께 짜릿함이 느껴진다.<br><br>정말 즐거웠다...<br>한 번 더 탈까?</p>
+<button onclick="goTo('slide2')">한 번 더 탄다</button><br>
+<button class="nav-button" onclick="goTo('slidestop')">그만둔다</button>
+ </div> 
 
+  <!-- 워터 슬라이드 --> 
+<div id="slidestop" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
+이 정도로 즐거울 때 멈추는 게 좋겠지. 워터 슬라이드에서 내려와 튜브를 반납했다.</p>
+<button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div> 
+  
+  <!-- 워터 슬라이드 --> 
+<div id="slide2" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
+이번에는 더더욱 기세 좋게 미끄러졌다! 귓가에서 바람 소리가 윙윙 울릴 정도다.<br><br>한 번 더 탈까?</p>
+<button onclick="goTo('slide3')">한 번 더 탄다</button><br>
+<button class="nav-button" onclick="goTo('slidestop')">그만둔다</button>
+ </div> 
+  <!-- 워터 슬라이드 --> 
+<div id="slide3" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
+빙글빙글 회전하면서 워터 슬라이드를 타고 내려왔다!<br>윽, 슬슬 멀미가 나는데...<br><br>그래도 한 번 더 탈까?</p>
+<button onclick="goTo('slide4')">한 번 더 탄다</button><br>
+<button class="nav-button" onclick="goTo('slidestop')">그만둔다</button>
+ </div> 
 
+  <!-- 워터 슬라이드 --> 
+<div id="slide4" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
+튜브를 거꾸로 탄 채로 워터 슬라이드를 타고 내려왔다!<br>네 번이나 연속해서 타고 나니 속이 울렁거린다...<br><br>워터 슬라이드를 마스터했다.<br>이만 나가기로 하자.</p>
+<button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div> 
 
     <!-- 카페 --> 
     <div id="cafe" class="hidden">
@@ -787,7 +822,7 @@
     <div id="zari" class="hidden">
     <p><span style="font-weight: bold;">[카페]</span><br><br>
 둥근 테이블에 푹신한 의자가 두 개씩 놓여 있다.<br>쓸데없이 낮거나 높지 않아 편하다.<br>중요한 이야기부터 시시콜콜한 잡담까지 이야기를 나누기에 좋아 보인다.</p>
-    <button onclick="goTo('zari1')">자리에 앉는다</button>
+    <button onclick="goTo('zari1')">자리에 앉는다</button><br>
     <button class="nav-button" onclick="goTo('cafe')">나가기</button>
     </div>   
 
@@ -795,7 +830,7 @@
     <div id="zari1" class="hidden">
     <p><span style="font-weight: bold;">[카페]</span><br><br>
 혼자 온 손님에게는 맞은편 자리에 동물 인형을 놓아 주는 것 같다.<br>공허한 눈의 펭귄 인형이 이쪽을 바라본다...</p>
-    <button onclick="goTo('zari2')">"안녕?" (말을 건다)</button>
+    <button onclick="goTo('zari2')">"안녕?" (말을 건다)</button><br>
     <button class="nav-button" onclick="goTo('cafe')">나가기</button>
     </div>   
 
@@ -829,7 +864,7 @@
     <div id="menupan1" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 어렵게나마 메뉴를 골라 주문을 마쳤다.<br>카운터 안쪽의 조리대에서 로봇이 음료와 디저트를 만들기 시작해, 조금 더 기다리면 자리까지 서빙해 준다.<br><br><em>"맛있게 드시길 바랍니다."</em></p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div>  
 
    <!-- 카페 메뉴판 --> 
@@ -843,31 +878,31 @@
     <div id="menupan3" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 <em>"맛있게 드시길 바랍니다."</em><br><br>칡즙과 무설탕 우엉 브라우니가 나왔다.</p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div>  
    <!-- 카페 메뉴판 --> 
     <div id="menupan4" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 <em>"맛있게 드시길 바랍니다."</em><br><br>양파즙과 피스타치오 크런치 바가 나왔다.</p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div>  
    <!-- 카페 메뉴판 --> 
     <div id="menupan5" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 <em>"맛있게 드시길 바랍니다."</em><br><br>녹즙과 바나나 캐슈넛 팬케이크가 나왔다.</p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div> 
    <!-- 카페 메뉴판 --> 
     <div id="menupan6" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 <em>"맛있게 드시길 바랍니다."</em><br><br>당근 주스와 아몬드 베리 스무디 볼이 나왔다.</p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div>  
    <!-- 카페 메뉴판 --> 
     <div id="menupan7" class="hidden">
     <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
 <em>"맛있게 드시길 바랍니다."</em><br><br>초콜릿 향 두유와 마카다미아 레몬 타르트가 나왔다.</p>
-    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
     </div>  
  
     <!-- 북트럭 --> 
@@ -884,7 +919,6 @@
 책 한 권을 골라 뽑아들었다.<br>제목은... 「영세불망 -희망의 기록과 절망의 재능」?<br>재밌을까?<br><br>책 사이에 코인이 하나 끼워져 있었다.<br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
     </div>   
-
   
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
