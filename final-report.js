@@ -23,21 +23,23 @@ function loadFinalReport() {
     { html: `<span style="color: black;">Coin : ${currentUser.coin}</span>`, align: 'left', lineStyle: 'color: black;' }
   ];
 
-  if (currentUser.key === 1) {
-    lines.push({ html: `<div style="color: black; font-style: italic;">손끝에 미세하게 꽃향기가 남아 있다 …</div>`, align: 'right', lineStyle: 'color: black; font-style: italic;' });
-  }
-  if (currentUser.unicycle === true) {
-    lines.push({ html: `<div style="color: black; font-style: italic;">외바퀴자전거 타는 법을 마스터했다 …</div>`, align: 'right', lineStyle: 'color: black; font-style: italic;' });
-  }
-  if (currentUser.wishticket === true) {
-    lines.push({ html: `<div style="color: black; font-style: italic;">‘소원권’ 을 획득했다. 선물할 시 상대의 호감도에 +2 …</div>`, align: 'right', lineStyle: 'color: black; font-style: italic;' });
-  }
-  if (currentUser.notalove === true) {
-    lines.push({ html: `<div style="color: black; font-style: italic;">공증인의 호의를 얻은 것 같다 …</div>`, align: 'right', lineStyle: 'color: black; font-style: italic;' });
-  }
-  if (currentUser.post) {
+  if (currentUser.slide) {
   lines.push({
-    html: `<div style="color: black; font-style: italic;">${currentUser.post} 압화된 엽서를 손에 넣었다 …</div>`,
+    html: `<div style="color: black; font-style: italic;">워터 슬라이드를 완전히 마스터했다 …</div>`,
+    align: 'right',
+    lineStyle: 'color: black; font-style: italic;'
+  });
+}
+  if (currentUser.anma) {
+  lines.push({
+    html: `<div style="color: black; font-style: italic;">안마 의자의 힘으로 쌓인 피로를 조금 풀었다 …</div>`,
+    align: 'right',
+    lineStyle: 'color: black; font-style: italic;'
+  });
+}
+  if (currentUser.photo) {
+  lines.push({
+    html: `<div style="color: black; font-style: italic;">${currentUser.photo}를 손에 넣었다 …</div>`,
     align: 'right',
     lineStyle: 'color: black; font-style: italic;'
   });
