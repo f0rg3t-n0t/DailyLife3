@@ -729,8 +729,7 @@
          <!-- 대여소:나.장.빌 --> 
 <div id="setgame5" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
-모든 아이템을 고르자, 부스 안에서 안내음이 들려온다. "메시지" "점수" </p>
-
+모든 아이템을 고르자, 부스 안에서 안내음이 들려온다.<br><br><span id="setgame-message"></span><br><br>이 장비를 그대로 대여해도 될 것 같다.</p>
 <button class="nav-button" onclick="goTo('borrow')">나가기</button>
  </div> 
   
@@ -1098,6 +1097,9 @@ function goTo(page) {
     currentUser.photo = "무난한";
     updateCoinDisplay();
   }
+  if (page === 'setgame5') {
+  showStatMessage();  // 메시지 출력 함수
+}
     if (page === 'starting-point') {
     document.getElementById('persistent-nav').style.display = 'flex';
   }
@@ -1254,7 +1256,33 @@ function dodo(buttonId) {
     alert("준비물이 부족하다. 작은 종이의 내용을 읽어 보자.");
   }
 }
+//★★★★★스탯메시지★★★★★
+function showStatMessage() {
+const stats = {
+  beauty: currentUser.beauty ?? 0,
+  power: currentUser.power ?? 0,
+  funny: currentUser.funny ?? 0
+};
+  const maxValue = Math.max(stats.beauty, stats.power, stats.funny);
 
+  // 최고값을 가진 스탯들 모으기
+  const topStats = Object.keys(stats).filter(stat => stats[stat] === maxValue);
+
+  // 동률 중에서 랜덤 선택
+  const chosen = topStats[Math.floor(Math.random() * topStats.length)];
+
+  const messages = {
+    beauty: '"시선을 사로잡는 미학! 청량한 여름 느낌이 가득한 아름다운 장비 세트입니다."',
+    power: '"타의 추종을 불허하는 힘의 소유자! 눈빛 한 번으로 좌중을 압도할 수 있는 장비 세트입니다."',
+    funny: '"압도적으로 파괴적인 센스! 어디에 있어도 시선을 끌 수 있는 파격적인 장비 세트입니다."'
+  };
+
+  const msgEl = document.getElementById('setgame-message');
+  if (msgEl) {
+    msgEl.innerText = messages[chosen] || '"기록 오류. 관리자에게 문의하세요."';
+  }
+}
+  
 //★★★★공연하기★★★★
 function onstage(buttonId) {
   if (currentUser.POW <= 2) {
