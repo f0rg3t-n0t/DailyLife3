@@ -770,6 +770,121 @@
 </p>
     <button class="nav-button" onclick="goTo('swimming')">나가기</button>
  </div> 
+
+
+
+
+    <!-- 카페 --> 
+    <div id="cafe" class="hidden">
+    <p><span style="font-weight: bold;">[카페]</span><br><br>
+음료수와 디저트를 즐길 수 있는 한적한 무인카페.<br>차분한 노래가 작게 흘러나와 평화로운 분위기를 유지하고 있다.<br><span style="color: #3f40d3;">자리</span>를 맡은 후 <span style="color: #3f40d3;">카페 카운터</span>에서 주문하면 될 것 같다.</p>
+    <button onclick="goTo('zari')">자리를 맡는다</button>
+    <button onclick="goTo('cafecounter')">카페 카운터</button><br>
+    <button class="nav-button" onclick="goTo('4thfloor')">나가기</button>
+    </div>  
+ 
+    <!-- 자리 --> 
+    <div id="zari" class="hidden">
+    <p><span style="font-weight: bold;">[카페]</span><br><br>
+둥근 테이블에 푹신한 의자가 두 개씩 놓여 있다.<br>쓸데없이 낮거나 높지 않아 편하다.<br>중요한 이야기부터 시시콜콜한 잡담까지 이야기를 나누기에 좋아 보인다.</p>
+    <button onclick="goTo('zari1')">자리에 앉는다</button>
+    <button class="nav-button" onclick="goTo('cafe')">나가기</button>
+    </div>   
+
+    <!-- 자리1 --> 
+    <div id="zari1" class="hidden">
+    <p><span style="font-weight: bold;">[카페]</span><br><br>
+혼자 온 손님에게는 맞은편 자리에 동물 인형을 놓아 주는 것 같다.<br>공허한 눈의 펭귄 인형이 이쪽을 바라본다...</p>
+    <button onclick="goTo('zari2')">"안녕?" (말을 건다)</button>
+    <button class="nav-button" onclick="goTo('cafe')">나가기</button>
+    </div>   
+
+    <!-- 자리2 --> 
+    <div id="zari2" class="hidden">
+    <p><span style="font-weight: bold;">[카페]</span><br><br>
+<em>"안녕?"</em><br>이쪽의 말을 따라한다... 한층 마음이 공허해졌다.</p>
+    <button class="nav-button" onclick="goTo('cafe')">나가기</button>
+    </div>   
+
+    <!-- 카페 --> 
+    <div id="cafecounter" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]</span><br><br>
+메뉴를 주문하거나 필요한 물건을 빌릴 수 있는 카운터.<br><span style="color: #3f40d3;">메뉴판</span>과 작은 <span style="color: #3f40d3;">북트럭</span>이 있다.</p>
+    <button onclick="goTo('menupan')">메뉴판</button>
+    <button onclick="goTo('booktruck')">북트럭</button><br>
+    <button class="nav-button" onclick="goTo('cafe')">나가기</button>
+    </div>   
+
+    <!-- 카페 메뉴판 --> 
+    <div id="menupan" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+메뉴판이라고는 믿을 수 없을 정도로 두껍다.<br>펼쳐 보니 커피, 논커피, 주스부터 리프레시 존을 의식한 듯한 단백질 쉐이크까지 없는 게 없다.<br>메뉴를 고르기 어려울 때는 선택을 점장에게 맡길 수도 있다고 한다...<br>그런데 점장이라고 해도 공증인인가?<br><br>주문을 하는 대신 <span style="color: #3f40d3;">음료 디스펜서 V3.0</span>을 이용할 수도 있다.<br>V3.0...?</p>
+    <button id="dka" onclick="goTodel('menupan1', 'dka')">메뉴를 주문한다</button><br>
+    <button id="dkaa" onclick="goTodel('menupan2', 'dkaa')">점장에게 맡긴다</button><br>
+    <button onclick="goTo('dispenser')">음료 디스펜서 V3.0</button><br>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan1" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+어렵게나마 메뉴를 골라 주문을 마쳤다.<br>카운터 안쪽의 조리대에서 로봇이 음료와 디저트를 만들기 시작해, 조금 더 기다리면 자리까지 서빙해 준다.<br><br><em>"맛있게 드시길 바랍니다."</em></p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan2" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+점장에게 선택을 맡겼다.<br>그러자 카운터 안쪽의 조리대에서 로봇이 음료와 디저트를 만들기 시작해, 조금 더 기다리면 자리까지 서빙해 준다. 나온 것은...</p>
+    <button id="sfbtn" onclick="omakase('sfbtn')">나온 메뉴를 확인한다</button>
+    </div>  
+
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan3" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+<em>"맛있게 드시길 바랍니다."</em><br><br>칡즙과 무설탕 우엉 브라우니가 나왔다.</p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan4" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+<em>"맛있게 드시길 바랍니다."</em><br><br>양파즙과 피스타치오 크런치 바가 나왔다.</p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan5" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+<em>"맛있게 드시길 바랍니다."</em><br><br>녹즙과 바나나 캐슈넛 팬케이크가 나왔다.</p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div> 
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan6" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+<em>"맛있게 드시길 바랍니다."</em><br><br>당근 주스와 아몬드 베리 스무디 볼이 나왔다.</p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+   <!-- 카페 메뉴판 --> 
+    <div id="menupan7" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
+<em>"맛있게 드시길 바랍니다."</em><br><br>초콜릿 향 두유와 마카다미아 레몬 타르트가 나왔다.</p>
+    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>  
+ 
+    <!-- 북트럭 --> 
+    <div id="booktruck" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[북트럭]</span><br><br>
+커피를 마시며 독서를 즐길 수 있도록 도서관에서 지원한 책 몇 권이 정리되어 있다.<br>다 읽은 다음에는 자리에 되돌려 놓자.<br>그 밖에 담요나 물티슈 등도 자유롭게 쓸 수 있도록 비치되어 있다.</p>
+   <button id="dkaf" onclick="goTodel('booktruck1', 'dkaf')">책을 살펴본다</button><br>
+   <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>   
+  
+    <!-- 북트럭 --> 
+    <div id="booktruck1" class="hidden">
+    <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[북트럭]</span><br><br>
+책 한 권을 골라 뽑아들었다.<br>제목은... 「영세불망 -희망의 기록과 절망의 재능」?<br>재밌을까?<br><br>책 사이에 코인이 하나 끼워져 있었다.<br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+   <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
+    </div>   
+
   
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
@@ -1080,7 +1195,7 @@ function goTo(page) {
   clearOutputs();
   pageHistory.push(page);
   //[중요]특정 페이지 진입 시 스탯(코인 등)변동
-  if (['onstage3','recording4','recording5','trashcan','seat4'].includes(page)) {
+  if (['running3','booktruck1'].includes(page)) {
     currentUser.coin = (currentUser.coin || 0) + 1;
     updateCoinDisplay();
   }
@@ -1094,18 +1209,6 @@ function goTo(page) {
   }
     if (['atlier1'].includes(page)) {
     currentUser.art = 1;
-    updateCoinDisplay();
-  }
-    if (['makeup3'].includes(page)) {
-    currentUser.acc = "토끼 머리띠";
-    updateCoinDisplay();
-  }
-      if (['makeup4'].includes(page)) {
-    currentUser.acc = "고양이 머리띠";
-    updateCoinDisplay();
-  }
-      if (['makeup5'].includes(page)) {
-    currentUser.acc = "다람쥐 머리띠";
     updateCoinDisplay();
   }
     if (['recording2'].includes(page)) {
@@ -1264,16 +1367,23 @@ function goBack() {
 
 
 //여기서부터 특정 장소에서 사용하도록 되어 있는 함수!!!!
-//★★★★★CD★★★★★
-function listencd(buttonId) {
-  if (currentUser.cd === 1) {
-    // 버튼 제거
-    const btn = document.getElementById(buttonId);
-    if (btn) btn.remove();  // 단 한 번만 제거
-    goTo('cd1');
+//★★★★오마카세★★★★
+function omakase(buttonId) {
+  if (currentUser.LUC <= 1) {
+    goTo('menupan3');
+  } else if (currentUser.LUC == 2) {
+    goTo('menupan4');
+  } else if (currentUser.LUC == 3) {
+    goTo('menupan5');
+  } else if (currentUser.LUC == 4) {
+    goTo('menupan6');
+  } else if (currentUser.LUC == 5) {
+    goTo('menupan7');
   } else {
-    alert("CD를 가지고 있지 않다. 골라 오도록 하자.");
+    goTo('menupan7');
   }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
 }
 
 //★★★★★머리띠★★★★★
