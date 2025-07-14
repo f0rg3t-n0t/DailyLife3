@@ -368,7 +368,7 @@
 
       <!-- 로비:카운터:notary4 --> 
     <div id="notary4" class="hidden">
-    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"그럼 문제입니다. 미래기관 대출 순위 1위 도서의 제목을 알고 계신가요?"</em><br><br>정확한 제목을 괄호 없이 입력하자.</p>
+    <p><span style="font-weight: bold;">[로비]/[카운터]<br>[공증인]</span><br><br><em>"그럼 문제입니다. 4층의 불한증막 내부 온도는 몇 도일까요?"</em><br><br>숫자만 입력하자.</p>
     <input type="text" id="secret-code-input">
     <div id="codebox">
     <button onclick="checkSecretCode()">확인</button>
@@ -384,23 +384,23 @@
  </div>
   
 
-  <!-- 영화관 : 음료 디스펜서 --> 
+  <!-- 카페 : 음료 디스펜서 --> 
   <div id="dispenser" class="hidden">
-  <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
+  <p><span style="font-weight: bold;">[카페]/[카페 카운터]<br>[메뉴판]</span><br><br>
   커피나 차 등의 음료를 자유롭게 이용 가능한 디스펜서.<br>기본적인 음료는 물론, 여러 가지 맛의 원두와 티백, 시럽도 비치되어 있어 얼마든지 원하는 음료를 제조 가능할 것 같다.<br>
   한쪽에는 '랜덤 디스펜서 : 1일 3회 이용 가능' 이라고 적힌 익숙한 상자가 있다.<br>그 옆에는 '랜덤 음료 공모전' 이라고 적힌 투표함이 놓여 있다.</p>
   <button onclick="goTo('dispenser1')">음료를 뽑는다</button>
   <button onclick="goTo('dispenser2')">랜덤 음료 공모전</button><br>
-  <button class="nav-button" onclick="goTo('cinema')">나가기</button>
+  <button class="nav-button" onclick="goTo('menupan')">나가기</button>
   </div>
   
-  <!-- 영화관 : 음료 디스펜서 1 (음료를 뽑는다) -->
+  <!-- 카페 : 음료 디스펜서 1 (음료를 뽑는다) -->
   <div id="dispenser1" class="hidden">
   <p><span style="font-weight: bold;">[레스토랑]/[음료 디스펜서]</span><br><br>
-  원하는 음료를 가져가거나 랜덤 디스펜서를 이용해 보자. 랜덤 디스펜서는 1일 3회 사용 제한이 있다.</p>
-  <button onclick="selectDrink('coke')">콜라</button>
-  <button onclick="selectDrink('melon')">메론 소다</button>
-  <button onclick="selectDrink('boricha')">보리차</button>
+  원하는 음료를 가져가거나 랜덤 디스펜서를 이용해 보자. 랜덤 디스펜서는 1일 3회 사용 제한이 있다.<br><br>이번 주의 랜덤 디스펜서 테마는 ＜좋아하는 사람의 마음을 사로잡기 위한 음료＞라고 한다.</p>
+  <button onclick="selectDrink('coffee')">커피</button>
+  <button onclick="selectDrink('latte')">카페라떼</button>
+  <button onclick="selectDrink('yogurt')">요거트 스무디</button>
   <button onclick="selectRandomDrink()">랜덤</button>
   <p id="drink-result" style="margin-top: 2em; font-weight: bold;"></p>
   <button class="nav-button" onclick="goTo('dispenser')">나가기</button>
@@ -809,6 +809,37 @@
 <button class="nav-button" onclick="goTo('swimming')">나가기</button>
  </div> 
 
+  <!-- 샤워실 --> 
+    <div id="shower" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[샤워실]</span><br><br>
+운동으로 지쳤을 때 땀을 씻어낼 수 있는 샤워실.<br><span style="color: #3f40d3;">세면대</span>와 <span style="color: #3f40d3;">화장대</span>는 공용이지만, 샤워 부스는 전부 개인용이다.</p>
+    <button onclick="goTo('shower1')">세면대</button>
+    <button onclick="goTo('shower2')">화장대</button><br>
+    <button class="nav-button" onclick="goTo('training')">나가기</button>
+    </div>   
+
+    <!-- 세면대 --> 
+    <div id="shower1" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[샤워실]<br>[세면대]</span><br><br>
+땀을 흘릴 정도의 운동을 하지 않았다면 가볍게 세수를 하고 가는 것도 괜찮을 것 같다.</p>
+    <button onclick="goTo('shower1-1')">세수를 한다</button><br>
+    <button class="nav-button" onclick="goTo('shower')">나가기</button>
+    </div>   
+
+    <!-- 세면대 --> 
+    <div id="shower1-1" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[샤워실]<br>[세면대]</span><br><br>
+뽀득뽀득 얼굴을 씻었다. 한결 상쾌해진 기분이다!</p>
+    <button class="nav-button" onclick="goTo('shower')">나가기</button>
+    </div>   
+
+    <!-- 화장대 --> 
+    <div id="shower2" class="hidden">
+    <p><span style="font-weight: bold;">[트레이닝 룸]/[샤워실]<br>[화장대]</span><br><br>
+샤워 후 스킨 케어를 할 수 있는 화장대.<br>드라이기, 고데기, 손 건조기 등이 완비되어 있다.</p>
+    <button class="nav-button" onclick="goTo('shower')">나가기</button>
+    </div>   
+  
     <!-- 카페 --> 
     <div id="cafe" class="hidden">
     <p><span style="font-weight: bold;">[카페]</span><br><br>
@@ -919,6 +950,90 @@
 책 한 권을 골라 뽑아들었다.<br>제목은... 「영세불망 -희망의 기록과 절망의 재능」?<br>재밌을까?<br><br>책 사이에 코인이 하나 끼워져 있었다.<br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
    <button class="nav-button" onclick="goTo('cafecounter')">나가기</button>
     </div>   
+
+   <!-- 스파 --> 
+<div id="spa" class="hidden">
+<p><span style="font-weight: bold;">[스파]</span><br><br>온욕과 찜질을 즐길 수 있는 스파...?<br>불한증막과 안마의자, 냉가마 등이 있는, 누군가에게는 익숙하고 누군가에게는 새로울 공간.<br><span style="color: #3f40d3;">탈의실</span>에서 옷을 갈아입고 안으로 들어갈 수 있다.</p>
+    <button onclick="goTo('change')">탈의실</button><br>
+    <button class="nav-button" onclick="goTo('4thfloor')">나가기</button>
+ </div> 
+
+ <!-- 스파 --> 
+<div id="change" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[탈의실]</span><br><br>탈의실 안에는 깨끗한 사우나복과 수건이 배치되어 있다.<br>여기서 옷을 갈아입은 다음 열쇠를 들고 안으로 들어가면 될 것 같다.</p>
+    <button onclick="goTo('spa1')">들어간다</button><br>
+    <button class="nav-button" onclick="goTo('spa')">나가기</button>
+ </div> 
+
+ <!-- 스파 --> 
+<div id="spa1" class="hidden">
+<p><span style="font-weight: bold;">[스파]</span><br><br>넓은 공간에 작은 <span style="color: #3f40d3;">매점</span>과 다양한 방들이 있다.<br><span style="color: #3f40d3;">불한증막</span>, <span style="color: #3f40d3;">냉가마</span>,<span style="color: #3f40d3;">안마 의자</span>까지...<br>쾌적한 공간에 베개가 굴러다니니 누우면 잠이 솔솔 올 것 같다.<br>충분히 쉰 다음 <span style="color: #3f40d3;">목욕탕</span>에 들어가 보자.</p>
+    <button onclick="goTo('store')">매점</button>
+    <button onclick="goTo('bulhanzungmak')">불한증막</button>
+    <button onclick="goTo('naenggama')">냉가마</button>
+    <button onclick="goTo('anma')">안마 의자</button>
+    <button onclick="goTo('tang')">목욕탕</button><br>
+    <button class="nav-button" onclick="goTo('change')">나가기</button>
+ </div> 
+
+ <!-- 매점 --> 
+<div id="store" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[매점]</span><br><br>
+간단한 먹을 거리를 제공하는 매점.<br>구운 계란이나 컵라면, 팥빙수, 냉커피와 식혜 등을 주문할 수 있다.<br>과자나 아이스크림도 잔뜩 놓여 있어 유혹을 뿌리치기 어렵다.</p>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+
+ <!-- 불한증 --> 
+<div id="bulhanzungmak" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[불한증막]</span><br><br>
+편백나무 향이 물씬 나는 건식 사우나실. 75도로 내부 온도가 설정되어 있어 몹시 후덥지근하다.<br>마음껏 땀을 빼되 무리하지 말고 꼭 어지러워지기 전에 나가도록 하자.</p>
+    <button id="stg1btn" onclick="bhzm('stg1btn')">불한증막 안에서 버틴다</button><br>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+ <!-- 불한증 --> 
+<div id="bulhanzungmak1" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[불한증막]</span><br><br>
+이 더위를 버텨야 사우나를 즐길 수 있는 법...이지만, 역시 더워! <br>저도 모르게 사우나실을 뒤로 하고 뛰쳐나오고 말았다... </p>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+ <!-- 불한증 --> 
+<div id="bulhanzungmak2" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[불한증막]</span><br><br>
+잠자코 버티고 있으면, 2주간 쌓인 어두운 감정들이 땀과 함께 빠져나가는 것 같다.<br>깨끗한 마음으로 밖으로 나서려던 참에 바닥에서 코인 하나를 발견했다.<br><br><span style="font-weight: bold;">1코인을 획득했다.</span></p>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+ <!-- 냉가마 --> 
+<div id="naenggama" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[냉가마]</span><br><br>
+한 걸음 딛은 바닥부터 얼음장 같은 냉가마. 영하 5도로 내부 온도가 설정되어 있어 몹시 춥다.<br>땀을 충분히 식히면 나가도록 하자.</p>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+ <!-- 안마 --> 
+<div id="anma" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[안마 의자]</span><br><br>
+15분부터 1시간까지 자유롭게 시간과 강도를 설정할 수 있는 안마 의자.<br>앉으면 몸을 편안하게 풀어 준다.</p>
+    <button id="no1" onclick="goTodel('anma1', 'no1')">몸을 맡긴다</button><br>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
+
+ <!-- 안마 --> 
+<div id="anma1" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[안마 의자]</span><br><br>
+...헉! 긴장이 풀려서 어느새 깜빡 잠든 것 같다.<br>몸이 한결 편안해졌다.<br>이미 안마는 끝났으니, 다음 사람을 위해 비켜 주자..</p>
+    <button class="nav-button" onclick="goTo('anma')">나가기</button>
+ </div> 
+
+ <!-- 탕 --> 
+<div id="tang" class="hidden">
+<p><span style="font-weight: bold;">[스파]/[목욕탕]</span><br><br>
+따뜻한 물이 나오는 스파. 온도 별로 다양한 탕이 있고, 수압 조절로 근육 이완을 돕는 안마탕도 있다.<br>따뜻한 물에 몸을 담그니 날카로워진 마음도 누그러지는 것 같다.</p>
+    <button class="nav-button" onclick="goTo('spa1')">나가기</button>
+ </div> 
   
 <!-- !!!!여기서부터 스크립트!!!! -->
   <script>
@@ -1229,7 +1344,7 @@ function goTo(page) {
   clearOutputs();
   pageHistory.push(page);
   //[중요]특정 페이지 진입 시 스탯(코인 등)변동
-  if (['running3','booktruck1'].includes(page)) {
+  if (['running3','booktruck1','bulhanzungmak2'].includes(page)) {
     currentUser.coin = (currentUser.coin || 0) + 1;
     updateCoinDisplay();
   }
@@ -1237,20 +1352,12 @@ function goTo(page) {
     currentUser.coin = (currentUser.coin || 0) + 2;
     updateCoinDisplay();
   }
-  if (['cdlist2'].includes(page)) {
-    currentUser.cd = 1;
+  if (['anma1'].includes(page)) {
+    currentUser.anma = 1;
     updateCoinDisplay();
   }
-    if (['atlier1'].includes(page)) {
-    currentUser.art = 1;
-    updateCoinDisplay();
-  }
-    if (['recording2'].includes(page)) {
-    currentUser.music = "발라드를";
-    updateCoinDisplay();
-  }
-      if (['recording3'].includes(page)) {
-    currentUser.music = "댄스곡을";
+    if (['slide4'].includes(page)) {
+    currentUser.slide = 1;
     updateCoinDisplay();
   }
         if (['tube2'].includes(page)) {
@@ -1398,8 +1505,6 @@ function goBack() {
 }
 
 
-
-
 //여기서부터 특정 장소에서 사용하도록 되어 있는 함수!!!!
 //★★★★오마카세★★★★
 function omakase(buttonId) {
@@ -1419,18 +1524,17 @@ function omakase(buttonId) {
     const btn = document.getElementById(buttonId);
     if (btn) btn.remove()  // 단 한 번만 제거
 }
-
-//★★★★★머리띠★★★★★
-function dodo(buttonId) {
-  if (currentUser.acc) {
-    // 버튼 제거
-    const btn = document.getElementById(buttonId);
-    if (btn) btn.remove();  // 단 한 번만 제거
-    goTo('mudae1');
+//★★★★불한증막★★★★
+function bhzm(buttonId) {
+  if (currentUser.POW <= 3) {
+    goTo('bulhanzungmak1');
   } else {
-    alert("준비물이 부족하다. 작은 종이의 내용을 읽어 보자.");
+    goTo('bulhanzungmak2');
   }
+    const btn = document.getElementById(buttonId);
+    if (btn) btn.remove()  // 단 한 번만 제거
 }
+
 //★★★★★스탯메시지★★★★★
 function showStatMessage() {
 const stats = {
@@ -1457,24 +1561,11 @@ const stats = {
     msgEl.innerText = messages[chosen] || '"기록 오류. 관리자에게 문의하세요."';
   }
 }
-  
-//★★★★공연하기★★★★
-function onstage(buttonId) {
-  if (currentUser.POW <= 2) {
-    goTo('onstage1');
-  } else if (currentUser.POW >= 4) {
-    goTo('onstage2');
-  } else {
-    goTo('onstage3');
-  }
-    const btn = document.getElementById(buttonId);
-    if (btn) btn.remove()  // 단 한 번만 제거
-}
     
 //★★★★★퀴즈★★★★★
 function checkSecretCode() {
   const input = document.getElementById('secret-code-input').value;
-  if (input === "초세계급이 재능을 숨김") { // 원하는 정답
+  if (input === "75") { // 원하는 정답
     const codebox = document.getElementById('codebox');
     if (codebox) {
       codebox.style.display = 'none';
@@ -1511,9 +1602,9 @@ function playDrinkSound() {
 // 일반 음료 선택 함수
 function selectDrink(type) {
   const messages = {
-    coke: { title: "콜라", desc: "영화관에서는 콜라! 팝콘과의 궁합을 자랑하는 시원한 음료." },
-    "melon": { title: "메론 소다", desc: "약간의 인공적인 메론 향이 오히려 매력적인 탄산음료." },
-    "boricha": { title: "보리차", desc: "건강한 어른을 위한 무난한 음료." }
+    coffee: { title: "커피", desc: "카페에서 빠질 수 없는 메인 메뉴. 강배전으로 볶은 원두 향이 강하게 난다." },
+    "latte": { title: "카페라떼", desc: "에스프레소 샷에 최고급 우유. 고소한 맛이 매력인 카페라떼." },
+    "yogurt": { title: "요거트 스무디", desc: "카페인에 약한 사람도 안심! 상큼하고 건강한 맛의 스무디." }
   };
   const msg = messages[type];
   const resultBox = document.getElementById("drink-result");
@@ -1533,30 +1624,34 @@ function selectRandomDrink() {
     return;
   }
   const messages = [
-    { title: "간장 콜라", desc: "추천인 : 제더카이어 어비스" },
-    { title: "유니콘 프라페", desc: "추천인 : 미아 콜린스" },
-    { title: "된장국", desc: "추천인 : 미아 콜린스" },
-    { title: "괴상한 음료에 지친 당신을 치료해 줄 비타500", desc: "추천인 : 요시다 신" },
-    { title: "목넘김이 깔끔한 생수", desc: "추천인 : 요시다 신" },
-    { title: "탄산팥죽", desc: "추천인 : 스트로 베리" },
-    { title: "밴드 딥 블루가 그려진 캔커피", desc: "추천인 : 스트로 베리" },
+    { title: "토마토 파스타 국물", desc: "추천인 : 제더카이어 어비스" },
+    { title: "스크로베리다크밀크화이트초콜릿솔트카라멜라떼", desc: "추천인 : 미아 콜린스" },
+    { title: "파우더가 잔뜩 올라간 티라미수 오레오 라떼", desc: "추천인 : 미아 콜린스" },
+    { title: "우유를 먼저 넣은 홍차", desc: "추천인 : 리반 에케로스" },
+    { title: "홍차를 먼저 넣은 우유", desc: "추천인 : 리반 에케로스" },
+    { title: "소화를 돕는 매실주스", desc: "추천인 : 요시다 신" },
+    { title: "비락식혜", desc: "추천인 : 요시다 신" },
     { title: "위스키", desc: "추천인 : 이반 카르포프" },
     { title: "보드카", desc: "추천인 : 이반 카르포프" },
-    { title: "누리표 누리자 에너지음료", desc: "추천인 : 하누리" },
-    { title: "누리표 복수의 붉은맛(※딸기맛)", desc: "추천인 : 하누리" },
-    { title: "팥맛 소다", desc: "추천인 : 폴라리스 래피드" },
-    { title: "두리안 주스", desc: "추천인 : 폴라리스 래피드" },
-    { title: "코코아", desc: "추천인 : 루스티카 테일윈드" },
-    { title: "딸기라떼", desc: "추천인 : 루스티카 테일윈드" },
-    { title: "아이스 위스키 커피", desc: "추천인 : 포멜하우트 에빌라" },
-    { title: "코코넛 간장 스무디", desc: "추천인 : 포멜하우트 에빌라" },
-    { title: "딸기잼", desc: "추천인 : ?" },
-    { title: "테트로도톡신 10mg", desc: "추천인 : 에디트 발랑틴" },
-    { title: "물 6L", desc: "추천인 : 에디트 발랑틴" },
-    { title: "아샷추", desc: "추천인 : 이사도르 도슨" },
-    { title: "바닷물", desc: "추천인 : 에르네스토 프로켈" },
-    { title: "마그마 라떼", desc: "추천인 : 에르네스토 프로켈" },
-    { title: "팥절미 라떼", desc: "추천인 : 태이" }
+    { title: "벨루가 골드", desc: "추천인 : 하누리" },
+    { title: "딸기 잔뜩 파르페", desc: "추천인 : 하누리" },
+    { title: "당도 5% 도라지즙", desc: "추천인 : 공증인" },
+    { title: "버블티", desc: "추천인 : 공증인" },
+    { title: "마시멜로 잔뜩 코코아", desc: "추천인 : 루스티카 테일윈드" },
+    { title: "차이 티 라떼", desc: "추천인 : 공증인" },
+    { title: "달걀 노른자", desc: "추천인 : 공증인" },
+    { title: "달걀 흰자", desc: "추천인 : 공증인" },
+    { title: "솜사탕 녹인 물", desc: "추천인 : 공증인" },
+    { title: "생크림", desc: "추천인 : 공증인" },
+    { title: "휘핑크림", desc: "추천인 : 공증인" },
+    { title: "에스프레소(카페인 함량 10g)", desc: "추천인 : 에디트 발랑틴" },
+    { title: "위스키(알코올 95%)", desc: "추천인 : 에디트 발랑틴" },
+    { title: "솔의 눈", desc: "추천인 : 이사도르 도슨" },
+    { title: "아침 햇살", desc: "추천인 : 이사도르 도슨" },
+    { title: "운동 후 마시는 건강 음료", desc: "추천인 : 원자한" },
+    { title: "대학원생용 6샷 커피", desc: "추천인 : 에르네스토 프로켈" },
+    { title: "팥이 들어가지 않은 차", desc: "추천인 : 에르네스토 프로켈" },
+    { title: "팥차", desc: "추천인 : 태이" }
   ];
   const randomIndex = Math.floor(Math.random() * messages.length);
   const msg = messages[randomIndex];
