@@ -668,10 +668,72 @@
      <!-- 대여소 --> 
 <div id="borrow" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
-'대여소'라는 간판이 확 눈에 들어오는 부스.<br>수영장이나 물가에서 이용할 수 있는 다양한 장비를 빠짐없이 구비하고 있는 것 같다.</p>
+'대여소'라는 간판이 확 눈에 들어오는 부스.<br>수영장이나 물가에서 이용할 수 있는 다양한 장비를 빠짐없이 구비하고 있는 것 같다.<br>
+<span style="color: #3f40d3;">튜브</span>를 빌리거나, <span style="color: #3f40d3;">나만의 장비 세트</span>를 빌릴 수 있다고 쓰여 있다.<br>나만의 장비 세트...?</p>
+  <button onclick="goTo('tube')">튜브 빌리기</button>
+<button onclick="goTo('setgame')">나만의 장비 세트 빌리기</button><br>
+    <button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div>
+
+       <!-- 대여소:튜브 --> 
+<div id="tube" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+튜브</p>
     <button class="nav-button" onclick="goTo('swimming')">나가기</button>
  </div> 
 
+       <!-- 대여소:나.장.빌 --> 
+<div id="setgame" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+"나만의 개성이 듬뿍 담긴 물놀이 장비 세트를 만들어 보세요."<br>라고 쓰여 있다.<br>한 번 해 볼까?</p>
+  <button id="stgm" onclick="goTodel('setgame1', 'stgm')">빌린다</button><br>
+    <button class="nav-button" onclick="goTo('borrow')">나가기</button>
+ </div> 
+
+         <!-- 대여소:나.장.빌 --> 
+<div id="setgame1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+대여소 부스 앞에 서자, 갑자기 세 개의 아이템이 튀어나왔다!<br>하나를 골라야 하는 것 같다...</p>
+<button onclick="increaseStatAndGo('beauty', 'setgame2')">꽃으로 화사하게 장식된 물총</button><br>
+<button onclick="increaseStatAndGo('power', 'setgame2')">바주카포를 닮은 물총</button><br>
+<button onclick="increaseStatAndGo('funny', 'setgame2')">음료수인 척하는 물총</button><br>
+ </div> 
+
+         <!-- 대여소:나.장.빌 --> 
+<div id="setgame2" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+다시 한 번 세 개의 아이템이 튀어나왔다!<br>하나를 골라야 하는 것 같다...</p>
+<button onclick="increaseStatAndGo('funny', 'setgame3')">해바라기 선글라스</button><br>
+<button onclick="increaseStatAndGo('beauty', 'setgame3')">예쁜 밀짚모자</button><br>
+<button onclick="increaseStatAndGo('power', 'setgame3')">카리스마 선글라스</button><br>
+ </div> 
+
+         <!-- 대여소:나.장.빌 --> 
+<div id="setgame3" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+다시 한 번 세 개의 아이템이 튀어나왔다!<br>하나를 골라야 하는 것 같다...</p>
+<button onclick="increaseStatAndGo('funny', 'setgame4')">펀치 파마 가발</button><br>
+<button onclick="increaseStatAndGo('power', 'setgame4')">험악한 문신 스티커</button><br>
+<button onclick="increaseStatAndGo('beauty', 'setgame4')">인어 꼬리</button><br>
+ </div> 
+
+         <!-- 대여소:나.장.빌 --> 
+<div id="setgame4" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+다시 한 번 세 개의 아이템이 튀어나왔다!<br>하나를 골라야 하는 것 같다...</p>
+<button onclick="increaseStatAndGo('power', 'setgame5')">맥주인 척하는 탄산음료</button><br>
+<button onclick="increaseStatAndGo('beauty', 'setgame5')">반투명한 파란색 사탕</button><br>
+<button onclick="increaseStatAndGo('funny', 'setgame5')">수염 모양 젤리</button><br>
+ </div> 
+
+         <!-- 대여소:나.장.빌 --> 
+<div id="setgame5" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+모든 아이템을 고르자, 부스 안에서 안내음이 들려온다. "메시지" "점수" </p>
+
+<button class="nav-button" onclick="goTo('borrow')">나가기</button>
+ </div> 
+  
        <!-- 워터 슬라이드 --> 
 <div id="slide" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[워터 슬라이드]</span><br><br>
@@ -1332,6 +1394,20 @@ function addgongmo() {
   document.getElementById('gongmo').value = "";
 }
 
+  //스탯 올리고 고투
+function increaseStatAndGo(statName, targetPage) {
+  if (!currentUser) return;
+
+  // 해당 스탯이 없다면 초기화
+  if (!currentUser.hasOwnProperty(statName)) {
+    currentUser[statName] = 0;
+  }
+
+  currentUser[statName] += 1;
+  goTo(targetPage);
+}
+
+    
   </script>
 <script src="final-report.js"></script>
 </body>
