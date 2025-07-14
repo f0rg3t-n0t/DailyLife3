@@ -678,10 +678,41 @@
        <!-- 대여소:튜브 --> 
 <div id="tube" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
-튜브</p>
+원하는 모양의 튜브를 빌릴 수 있다.<br>이곳에서 수영 연습을 위해 사용하거나, 바다에 가지고 나가 해수욕을 즐길 수도 있을 것 같다.</p>
+    <button id="aaam" onclick="goTodel('tube1', 'aaam')">빌린다</button><br>
     <button class="nav-button" onclick="goTo('swimming')">나가기</button>
  </div> 
 
+       <!-- 대여소:튜브 --> 
+<div id="tube1" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+어떤 튜브를 빌릴까?</p>
+  <button onclick="goTo('tube2')">평범한 튜브</button>
+    <button onclick="goTo('tube3')">돌고래 모양 튜브</button>
+    <button onclick="goTo('tube4')">피자 모양 튜브</button>
+ </div> 
+
+       <!-- 대여소:튜브 --> 
+<div id="tube2" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+평범한 원형 튜브를 빌렸다. 조금 밋밋하지만, 물놀이의 정석 하면 이 튜브!</p>
+  <button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div> 
+
+         <!-- 대여소:튜브 --> 
+<div id="tube3" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+돌고래 모양 튜브를 빌렸다. 물살을 가르는 한 마리 바다 생물이 되어 보자.</p>
+  <button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div> 
+
+         <!-- 대여소:튜브 --> 
+<div id="tube4" class="hidden">
+<p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
+피자 모양 튜브를 빌렸다. 바다 위를 한가롭게 떠다니는 피자 한 조각이 되어 보자.</p>
+  <button class="nav-button" onclick="goTo('swimming')">나가기</button>
+ </div> 
+  
        <!-- 대여소:나.장.빌 --> 
 <div id="setgame" class="hidden">
 <p><span style="font-weight: bold;">[트레이닝 룸]/[수영장]<br>[대여소]</span><br><br>
@@ -1085,16 +1116,16 @@ function goTo(page) {
     currentUser.music = "댄스곡을";
     updateCoinDisplay();
   }
-        if (['onecut2'].includes(page)) {
-    currentUser.photo = "당당한";
+        if (['tube2'].includes(page)) {
+    currentUser.photo = "평범한 튜브";
     updateCoinDisplay();
   }
-        if (['onecut3'].includes(page)) {
-    currentUser.photo = "사랑스러운";
+        if (['tube3'].includes(page)) {
+    currentUser.photo = "돌고래 모양 튜브";
     updateCoinDisplay();
   }
-        if (['onecut4'].includes(page)) {
-    currentUser.photo = "무난한";
+        if (['tube4'].includes(page)) {
+    currentUser.photo = "피자 모양 튜브";
     updateCoinDisplay();
   }
   if (page === 'setgame5') {
